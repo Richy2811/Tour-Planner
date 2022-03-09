@@ -51,13 +51,18 @@
             <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" ResizeDirection="Columns"/>
             
             <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="45*"/>
+                    <ColumnDefinition Width="45*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="5"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <StackPanel VerticalAlignment="Top" Grid.Row="0">
+                <StackPanel VerticalAlignment="Top" Grid.Row="0" Grid.ColumnSpan="3">
                     <DockPanel>
                         <Label Content="Title:" />
                         <TextBox HorizontalAlignment="Left" Text="" Margin="5,5,5,5" Width="100"/>
@@ -66,81 +71,36 @@
                         <Button Margin="5,5,5,5" DockPanel.Dock="Left" Content="Route"/>
                         <Button Margin="5,5,5,5" DockPanel.Dock="Left" Content="Description"/>
                     </StackPanel>
-                    <TextBox HorizontalAlignment="Left" Text="" Margin="5,5,5,5" Width="500" Height="100"/>
+                    <TextBox HorizontalAlignment="Left" Text="" Margin="5,5,5,5" Width="500" Height="100" Grid.Column="0" Grid.ColumnSpan="3"/>
                 </StackPanel>
 
-                <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch"/>
+                <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" Grid.ColumnSpan="3"/>
                 
-                <StackPanel Grid.Row="2">
+                <Button Margin="5,5,5,5"  Content="Logs:" Grid.Row="2" Grid.Column="0"/>
+
+                <StackPanel Grid.Row="2" Grid.Column="2">
                     <StackPanel Orientation="Horizontal">
-                        <Button Margin="5,5,5,5"  Content="Logs:" />
+                        
                         <Button Margin="2.5,2.5,2.5,2.5" Content="+"/>
                         <Button Margin="2.5,2.5,2.5,2.5" Content="-"/>
                         <Button Margin="2.5,2.5,2.5,2.5" Content="[]"/>
                     </StackPanel>
                 </StackPanel>
 
-                <FlowDocumentReader UseLayoutRounding="True" SnapsToDevicePixels="True" Grid.Row="3">
-                    <FlowDocumentReader.Resources>
-                        <Style TargetType="TableCell">
-                            <Setter Property="TextAlignment" Value="Center"/>
-                        </Style>
-                    </FlowDocumentReader.Resources>
-                    <FlowDocument>
-                        <Table CellSpacing="0">
-                            <Table.Columns>
-                                <TableColumn/>
-                                <TableColumn/>
-                                <TableColumn/>
-                                <TableColumn/>
-                            </Table.Columns>
-                            <TableRowGroup>
-                                <TableRow>
-                                    <TableCell BorderBrush="Black" BorderThickness="1">
-                                        <Paragraph FontWeight="Bold">Date</Paragraph>
-                                    </TableCell>
-                                    <TableCell BorderBrush="Black" BorderThickness="0,1,1,1">
-                                        <Paragraph FontWeight="Bold">Duration</Paragraph>
-                                    </TableCell>
-                                    <TableCell BorderBrush="Black" BorderThickness="0,1,1,1">
-                                        <Paragraph FontWeight="Bold">Distance</Paragraph>
-                                    </TableCell>
-                                    <TableCell BorderBrush="Black" BorderThickness="0,1,1,1">
-                                        <Paragraph FontWeight="Bold">...</Paragraph>
-                                    </TableCell>
-                                </TableRow>
-                                <TableRow>
-                                    <TableCell BorderBrush="Black" BorderThickness="1,0,1,1">
-                                        <Paragraph>01.01.2021</Paragraph>
-                                    </TableCell>
-                                    <TableCell BorderBrush="Black" BorderThickness="0,0,1,1">
-                                        <Paragraph>04:05:06</Paragraph>
-                                    </TableCell>
-                                    <TableCell BorderBrush="Black" BorderThickness="0,0,1,1">
-                                        <Paragraph>120km</Paragraph>
-                                    </TableCell>
-                                    <TableCell BorderBrush="Black" BorderThickness="0,0,1,1">
-                                        <Paragraph>...</Paragraph>
-                                    </TableCell>
-                                </TableRow>
-                                <TableRow>
-                                    <TableCell BorderBrush="Black" BorderThickness="1,0,1,1" TextAlignment="Center">
-                                        <Paragraph>02.01.2021</Paragraph>
-                                    </TableCell>
-                                    <TableCell BorderBrush="Black" BorderThickness="0,0,1,1">
-                                        <Paragraph>01.02:03</Paragraph>
-                                    </TableCell>
-                                    <TableCell BorderBrush="Black" BorderThickness="0,0,1,1">
-                                        <Paragraph>100km</Paragraph>
-                                    </TableCell>
-                                    <TableCell BorderBrush="Black" BorderThickness="0,0,1,1">
-                                        <Paragraph>...</Paragraph>
-                                    </TableCell>
-                                </TableRow>
-                            </TableRowGroup>
-                        </Table>
-                    </FlowDocument>
-                </FlowDocumentReader>
+                <DataGrid Grid.Row="3" Grid.ColumnSpan="3"
+                  Margin="5" 
+                  ItemsSource="{Binding Data}" 
+                  AutoGenerateColumns="False" 
+                  AlternatingRowBackground="LightGray"
+                  CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Date}" Header="Date" Width="100"/>
+                        <DataGridTextColumn Binding="{Binding Duration}" Header="Duration" Width="100"/>
+                        <DataGridTextColumn Binding="{Binding Distance}" Header="Distance" Width="100"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+
 
             </Grid>
 
