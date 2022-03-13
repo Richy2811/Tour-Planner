@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace TourPlanner
 {
-     public class RelayCommand
+     public class RelayCommand : ICommand
     {
         private Action<object> _execute;
         private Predicate<object> _canExecute;

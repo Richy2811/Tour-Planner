@@ -22,16 +22,24 @@ namespace TourPlanner
             AddCommand = new RelayCommand((_) =>
             {
                 Data.Add(new LogEntry("empty", "empty", "empty"));
-
+                
             });
-
-            /*DeleteCommand = new RelayCommand((_) =>
+            /*AddCommand = new RelayCommand((_) =>
             {
-                int last = Data.Count;
-                Data.RemoveAt(last);
-                //OnPropertyChanged(nameof(CurrentTitle));
+                Data.Add(new LogEntry("empty", "empty", "empty"));
+                OnPropertyChanged();
 
             });*/
+
+            DeleteCommand = new RelayCommand((_) =>
+            {
+                int last = Data.Count;
+                Data.RemoveAt(last-1);
+                OnPropertyChanged();
+                CurrentTitle = string.Empty;
+                OnPropertyChanged(nameof(CurrentTitle));
+
+            });
 
             LoadLogs();
         }
