@@ -40,16 +40,15 @@
                 <ColumnDefinition Width="5"/>
                 <ColumnDefinition Width="4*"/>
             </Grid.ColumnDefinitions>
-            <ListBox>
+            <ListBox ItemsSource="{Binding TourList}">
                 <DockPanel VerticalAlignment="Top">
                     <Label Content="Tours" />
-                    <Button Margin="2.5,2.5,2.5,2.5" Content="+"/>
-                    <Button Margin="2.5,2.5,2.5,2.5" Content="-" />
+                    <Button Margin="2.5,2.5,2.5,2.5" Command="{Binding AddTour}">+</Button>
+                        <Button Margin="2.5,2.5,2.5,2.5" Command="{Binding DeleteTour}">-</Button>
                     <Button Margin="2.5,2.5,2.5,2.5" Content="[]"/>
                 </DockPanel>
-                <ListBoxItem>-Tour 1</ListBoxItem>
-                <ListBoxItem>-Tour 2</ListBoxItem>
-                <ListBoxItem>-Tour 3</ListBoxItem>
+                <ListBoxItem>- Tour1</ListBoxItem>
+                <ListBoxItem>- Tour2</ListBoxItem>
             </ListBox>
             
             <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" ResizeDirection="Columns"/>
@@ -84,15 +83,15 @@
 
                 <StackPanel Grid.Row="2" Grid.Column="2">
                     <StackPanel Orientation="Horizontal">
-                        <Button Margin="2.5,2.5,2.5,2.5" Width="30"  Command="{Binding AddCommand}">+</Button>
-                        <Button Margin="2.5,2.5,2.5,2.5" IsDefault="True" Command="{Binding DeleteCommand}">-</Button>
+                        <Button Margin="2.5,2.5,2.5,2.5" Width="30"  Command="{Binding AddLog}">+</Button>
+                        <Button Margin="2.5,2.5,2.5,2.5" IsDefault="True" Command="{Binding DeleteLog}">-</Button>
                         <Button Margin="2.5,2.5,2.5,2.5" Content="[]"/>
                     </StackPanel>
                 </StackPanel>
 
                 <DataGrid Grid.Row="3" Grid.ColumnSpan="3"
                   Margin="5" 
-                  ItemsSource="{Binding Data}" 
+                  ItemsSource="{Binding LogData}" 
                   AutoGenerateColumns="False" 
                   AlternatingRowBackground="LightGray"
                   CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">

@@ -9,32 +9,31 @@ namespace TourPlanner
     public class MainViewModel : INotifyPropertyChanged
     {
 
-        public ObservableCollection<LogEntry> Data { get; }
+        public ObservableCollection<LogEntry> LogData { get; }
             = new ObservableCollection<LogEntry>();
 
+        public ObservableCollection<TourEntry> TourData { get; }
+           = new ObservableCollection<TourEntry>();
+
         public string CurrentTitle { get; set; }
-        public RelayCommand AddCommand { get; }
-        public RelayCommand DeleteCommand { get; }
+        public RelayCommand AddLog { get; }
+        public RelayCommand DeleteLog { get; }
+
+       public RelayCommand AddTour { get; }
 
 
         public MainViewModel()
         {
-            AddCommand = new RelayCommand((_) =>
+            AddLog = new RelayCommand((_) =>
             {
-                Data.Add(new LogEntry("empty", "empty", "empty"));
+                LogData.Add(new LogEntry("empty", "empty", "empty"));
                 
             });
-            /*AddCommand = new RelayCommand((_) =>
-            {
-                Data.Add(new LogEntry("empty", "empty", "empty"));
-                OnPropertyChanged();
 
-            });*/
-
-            DeleteCommand = new RelayCommand((_) =>
+            DeleteLog = new RelayCommand((_) =>
             {
-                int last = Data.Count;
-                Data.RemoveAt(last-1);
+                int last = LogData.Count;
+                LogData.RemoveAt(last-1);
                 OnPropertyChanged();
                 CurrentTitle = string.Empty;
                 OnPropertyChanged(nameof(CurrentTitle));
@@ -42,12 +41,18 @@ namespace TourPlanner
             });
 
             LoadLogs();
+            LoadTours();
         }
 
         private void LoadLogs()
         {
-            Data.Add(new LogEntry("10.02.2022", "01:20:34", "100km"));
-            Data.Add(new LogEntry("12.03.2022", "02:30:22", "230km"));
+            LogData.Add(new LogEntry("10.02.2022", "01:20:34", "100km"));
+            LogData.Add(new LogEntry("12.03.2022", "02:30:22", "230km"));
+        }
+
+        private void LoadTours()
+        {
+            TourData.Add(new TourEntry("Tour1"));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
