@@ -40,11 +40,11 @@
                 <ColumnDefinition Width="5"/>
                 <ColumnDefinition Width="4*"/>
             </Grid.ColumnDefinitions>
-            <ListBox ItemsSource="{Binding TourList}">
+            <ListBox ItemsSource="{Binding TourList}" Grid.ColumnSpan="2" Margin="4,0,1,0">
                 <DockPanel VerticalAlignment="Top">
                     <Label Content="Tours" />
                     <Button Margin="2.5,2.5,2.5,2.5" Command="{Binding AddTour}">+</Button>
-                        <Button Margin="2.5,2.5,2.5,2.5" Command="{Binding DeleteTour}">-</Button>
+                    <Button Margin="2.5,2.5,2.5,2.5" Command="{Binding DeleteTour}">-</Button>
                     <Button Margin="2.5,2.5,2.5,2.5" Content="[]"/>
                 </DockPanel>
                 <ListBoxItem>- Tour1</ListBoxItem>
@@ -91,10 +91,10 @@
 
                 <DataGrid Grid.Row="3" Grid.ColumnSpan="3"
                   Margin="5" 
-                  ItemsSource="{Binding LogData}" 
+                  ItemsSource="{Binding LogData}"
                   AutoGenerateColumns="False" 
                   AlternatingRowBackground="LightGray"
-                  CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+                  CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Date}" Header="Date" Width="100"/>
                         <DataGridTextColumn Binding="{Binding Duration}" Header="Duration" Width="100"/>
