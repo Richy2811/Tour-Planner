@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 D:\4. Semester\SWEN\Tour-Planner\TourPlanner\TourPlanner\App.xaml
-2923570331
+62034226268
 
-12308950281
+20-1354459933
 193-1891726104
-MainWindow.xaml;Views\MenuBar.xaml;
+MainWindow.xaml;Views\MenuBar.xaml;Views\SingleLineSearchBar.xaml;Views\TitleAndDescription.xaml;Views\TourList.xaml;Views\TourLog.xaml;
 
-True
+False
 

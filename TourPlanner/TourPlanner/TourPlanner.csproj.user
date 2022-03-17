@@ -10,12 +10,24 @@
     <Compile Update="Views\MenuBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\SingleLineSearchBar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\TourList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\MenuBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SingleLineSearchBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\TourList.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

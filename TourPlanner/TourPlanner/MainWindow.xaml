@@ -3,33 +3,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TourPlanner.ViewModels"
+        xmlns:local1="clr-namespace:TourPlanner.ViewModels"
+        xmlns:local="clr-namespace:TourPlanner.Views"
         mc:Ignorable="d"
         Title="TourPlanner" Height="450" Width="800">
    
     <Window.DataContext>
-        <local:MainViewModel />
+        <local1:MainViewModel />
     </Window.DataContext>
 
     <StackPanel>
-        <DockPanel VerticalAlignment="Top">
-            <ToolBar>
-                <Menu>
-                    <MenuItem Header="File">
-                        <MenuItem Header="MenuItem1"/>
-                    </MenuItem>
-                    <MenuItem Header="Edit">
-                        <MenuItem Header="MenuItem1"/>
-                    </MenuItem>
-                    <MenuItem Header="Options">
-                        <MenuItem Header="MenuItem1"/>
-                    </MenuItem>
-                    <MenuItem Header="Help" HorizontalAlignment="Right">
-                        <MenuItem Header="MenuItem1"/>
-                    </MenuItem>
-                </Menu>
-            </ToolBar>
-        </DockPanel>
+        <local:MenuBar x:Name="MenuBar"/>
         <DockPanel VerticalAlignment="Top">
             <Label Content="Search" />
             <TextBox HorizontalAlignment="Left" Text="" Margin="5,5,5,5" Width="100"/>
