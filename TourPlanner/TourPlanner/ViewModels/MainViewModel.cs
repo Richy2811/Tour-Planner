@@ -1,12 +1,13 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using TourPlanner.ViewModels.Abstract;
 
 
 
-namespace TourPlanner
+namespace TourPlanner.ViewModels
 {
-    public class MainViewModel : INotifyPropertyChanged
+    public class MainViewModel : BaseViewModel
     {
 
         public ObservableCollection<LogEntry> LogData { get; }
@@ -55,10 +56,5 @@ namespace TourPlanner
             TourData.Add(new TourEntry("Tour1"));
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }
