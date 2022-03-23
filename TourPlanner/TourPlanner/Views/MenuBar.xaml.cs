@@ -16,9 +16,9 @@ using System.Windows.Shapes;
 namespace TourPlanner.Views
 {
     /// <summary>
-    /// Interaction logic for MenuBar.xaml
+    /// Interaktionslogik für MenuBar.xaml
     /// </summary>
-    public partial class MenuBar : Page
+    public partial class MenuBar : UserControl
     {
         public MenuBar()
         {

@@ -3,94 +3,38 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local1="clr-namespace:TourPlanner.ViewModels"
         xmlns:local="clr-namespace:TourPlanner.Views"
         mc:Ignorable="d"
         Title="TourPlanner" Height="450" Width="800">
-   
-    <Window.DataContext>
-        <local1:MainViewModel />
-    </Window.DataContext>
 
     <StackPanel>
         <local:MenuBar x:Name="MenuBar"/>
-        <DockPanel VerticalAlignment="Top">
-            <Label Content="Search" />
-            <TextBox HorizontalAlignment="Left" Text="" Margin="5,5,5,5" Width="100"/>
-        </DockPanel>
+        <local:SingleLineSearchBar x:Name="SingleLineSearchBar"/>
+        
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="5"/>
                 <ColumnDefinition Width="4*"/>
             </Grid.ColumnDefinitions>
-            <ListBox ItemsSource="{Binding TourList}" Grid.ColumnSpan="2" Margin="4,0,1,0">
-                <DockPanel VerticalAlignment="Top">
-                    <Label Content="Tours" />
-                    <Button Margin="2.5,2.5,2.5,2.5" Command="{Binding AddTour}">+</Button>
-                    <Button Margin="2.5,2.5,2.5,2.5" Command="{Binding DeleteTour}">-</Button>
-                    <Button Margin="2.5,2.5,2.5,2.5" Content="[]"/>
-                </DockPanel>
-                <ListBoxItem>- Tour1</ListBoxItem>
-                <ListBoxItem>- Tour2</ListBoxItem>
-            </ListBox>
+
+            <local:TourList x:Name="TourList" Grid.Column="0"/>
             
             <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" ResizeDirection="Columns"/>
-            
+
             <Grid Grid.Column="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="45*"/>
-                    <ColumnDefinition Width="45*"/>
-                    <ColumnDefinition Width="10*"/>
-                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="5"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <StackPanel VerticalAlignment="Top" Grid.Row="0" Grid.ColumnSpan="3">
-                    <DockPanel>
-                        <Label Content="Title:" />
-                        <TextBox HorizontalAlignment="Left" Text="{Binding CurrentTitle, UpdateSourceTrigger=PropertyChanged}" Margin="5,5,5,5" Width="100" />
-                    </DockPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Button Margin="5,5,5,5" DockPanel.Dock="Left" Content="Route"/>
-                        <Button Margin="5,5,5,5" DockPanel.Dock="Left" Content="Description"/>
-                    </StackPanel>
-                    <TextBox HorizontalAlignment="Left" Text="" Margin="5,5,5,5" Width="500" Height="100" Grid.Column="0" Grid.ColumnSpan="3"/>
-                </StackPanel>
+                <local:TitleAndDescription x:Name="TitleAndDescription" Grid.Row="0"/>
 
                 <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" Grid.ColumnSpan="3"/>
-                
-                <Button Margin="5,5,5,5"  Content="Logs:" Grid.Row="2" Grid.Column="0"/>
 
-                <StackPanel Grid.Row="2" Grid.Column="2">
-                    <StackPanel Orientation="Horizontal">
-                        <Button Margin="2.5,2.5,2.5,2.5" Width="30"  Command="{Binding AddLog}">+</Button>
-                        <Button Margin="2.5,2.5,2.5,2.5" IsDefault="True" Command="{Binding DeleteLog}">-</Button>
-                        <Button Margin="2.5,2.5,2.5,2.5" Content="[]"/>
-                    </StackPanel>
-                </StackPanel>
-
-                <DataGrid Grid.Row="3" Grid.ColumnSpan="3"
-                  Margin="5" 
-                  ItemsSource="{Binding LogData}"
-                  AutoGenerateColumns="False" 
-                  AlternatingRowBackground="LightGray"
-                  CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="False">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Date}" Header="Date" Width="100"/>
-                        <DataGridTextColumn Binding="{Binding Duration}" Header="Duration" Width="100"/>
-                        <DataGridTextColumn Binding="{Binding Distance}" Header="Distance" Width="100"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-
-
-
+                <local:TourLog x:Name="TourLog"  Grid.Row="2"/>
             </Grid>
-
-
         </Grid>
     </StackPanel>
 

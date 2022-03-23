@@ -9,47 +9,36 @@ namespace TourPlanner.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
+        private readonly MenuBarViewModel menuBarViewModel;
+        private readonly SingleLineSearchBarViewModel singleLineSearchBarViewModel;
+        private readonly TitleAndDescriptionViewModel titleAndDescriptionViewModel;
+        private readonly TourListViewModel tourListViewModel;
+        private readonly TourLogViewModel tourLogViewModel;
 
-        public ObservableCollection<LogEntry> LogData { get; }
-            = new ObservableCollection<LogEntry>();
 
+
+
+       
         public ObservableCollection<TourEntry> TourData { get; }
            = new ObservableCollection<TourEntry>();
 
         public string CurrentTitle { get; set; }
-        public RelayCommand AddLog { get; }
-        public RelayCommand DeleteLog { get; }
+       
 
        public RelayCommand AddTour { get; }
 
 
-        public MainViewModel()
+        public MainViewModel(MenuBarViewModel menuBarViewModel, SingleLineSearchBarViewModel singleLineSearchBarViewModel, TitleAndDescriptionViewModel titleAndDescriptionViewModel, TourListViewModel tourListViewModel, TourLogViewModel tourLogViewModel)
         {
-            AddLog = new RelayCommand((_) =>
-            {
-                LogData.Add(new LogEntry("empty", "empty", "empty"));
-                
-            });
-
-            DeleteLog = new RelayCommand((_) =>
-            {
-                int last = LogData.Count;
-                LogData.RemoveAt(last-1);
-                OnPropertyChanged();
-                CurrentTitle = string.Empty;
-                OnPropertyChanged(nameof(CurrentTitle));
-
-            });
-
-            LoadLogs();
+            this.menuBarViewModel = menuBarViewModel;
+            this.singleLineSearchBarViewModel = singleLineSearchBarViewModel;
+            this.titleAndDescriptionViewModel = titleAndDescriptionViewModel;
+            this.tourListViewModel = tourListViewModel;
+            this.tourLogViewModel = tourLogViewModel;
+            
             LoadTours();
         }
 
-        private void LoadLogs()
-        {
-            LogData.Add(new LogEntry("10.02.2022", "01:20:34", "100km"));
-            LogData.Add(new LogEntry("12.03.2022", "02:30:22", "230km"));
-        }
 
         private void LoadTours()
         {

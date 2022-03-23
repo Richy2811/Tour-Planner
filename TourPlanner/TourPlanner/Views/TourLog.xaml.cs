@@ -16,9 +16,9 @@ using System.Windows.Shapes;
 namespace TourPlanner.Views
 {
     /// <summary>
-    /// Interaction logic for TourLog.xaml
+    /// Interaktionslogik für TourLog.xaml
     /// </summary>
-    public partial class TourLog : Page
+    public partial class TourLog : UserControl
     {
         public TourLog()
         {

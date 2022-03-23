@@ -7,7 +7,7 @@ using TourPlanner.ViewModels.Abstract;
 
 namespace TourPlanner.ViewModels
 {
-    class MenuBarViewModel : BaseViewModel
+    public class MenuBarViewModel : BaseViewModel
     {
     }
 }

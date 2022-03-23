@@ -7,7 +7,7 @@ using TourPlanner.ViewModels.Abstract;
 
 namespace TourPlanner.ViewModels
 {
-    class SingleLineSearchBarViewModel : BaseViewModel
+    public class SingleLineSearchBarViewModel : BaseViewModel
     {
     }
 }

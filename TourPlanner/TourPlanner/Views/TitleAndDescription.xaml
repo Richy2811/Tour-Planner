@@ -1,14 +1,20 @@
-﻿<Page x:Class="TourPlanner.Views.TitleAndDescription"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:TourPlanner.Views"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="TitleAndDescription">
-
-    <Grid>
-        
-    </Grid>
-</Page>
+﻿<UserControl x:Class="TourPlanner.Views.TitleAndDescription"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TourPlanner.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel VerticalAlignment="Top">
+        <DockPanel>
+            <Label Content="Title:" />
+            <TextBox HorizontalAlignment="Left" Text="{Binding CurrentTitle, UpdateSourceTrigger=PropertyChanged}" Margin="5,5,5,5" Width="100" />
+        </DockPanel>
+        <StackPanel Orientation="Horizontal">
+            <Button Margin="5,5,5,5" DockPanel.Dock="Left" Content="Route"/>
+            <Button Margin="5,5,5,5" DockPanel.Dock="Left" Content="Description"/>
+        </StackPanel>
+        <TextBox HorizontalAlignment="Left" Text="" Margin="5,5,5,5" Width="500" Height="100" Grid.Column="0" Grid.ColumnSpan="3"/>
+    </StackPanel>
+</UserControl>
