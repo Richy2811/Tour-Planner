@@ -9,5 +9,6 @@
     <DockPanel VerticalAlignment="Top">
         <Label Content="Search" />
         <TextBox HorizontalAlignment="Left" Text="" Margin="5,5,5,5" Width="100"/>
+        <Button HorizontalAlignment="Left" Margin="2.5,2.5,2.5,2.5" Width="30"  Command="{Binding AddLog}">Go</Button>
     </DockPanel>
 </UserControl>

@@ -19,7 +19,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Button Margin="5,5,5,5"  Content="Logs:" Grid.Row="2" Grid.Column="0"/>
+        <Label Margin="5,5,5,5"  Content="Logs:" Grid.Row="2" Grid.Column="0"/>
 
         <StackPanel Grid.Row="2" Grid.Column="2">
             <StackPanel Orientation="Horizontal">
