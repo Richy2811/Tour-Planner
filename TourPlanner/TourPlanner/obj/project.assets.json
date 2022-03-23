@@ -1,11 +1,33 @@
 {
   "version": 3,
   "targets": {
-    "net5.0-windows7.0": {}
+    "net5.0-windows7.0": {
+      "MvvmLight/5.4.1.1": {
+        "type": "package"
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "MvvmLight/5.4.1.1": {
+      "sha512": "fTUDMWT//ChZGd7Q5k0IaJuIXgh+FM43pCStxup7kgh1MQXvC48CjpjWkp5Auru/YXhHOJOMgD1NdtFZgn6K2g==",
+      "type": "package",
+      "path": "mvvmlight/5.4.1.1",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/ViewModel/MainViewModel.cs.pp",
+        "Content/ViewModel/ViewModelLocator.cs.pp",
+        "mvvmlight.5.4.1.1.nupkg.sha512",
+        "mvvmlight.nuspec",
+        "tools/install.ps1"
+      ]
+    }
+  },
   "projectFileDependencyGroups": {
-    "net5.0-windows7.0": []
+    "net5.0-windows7.0": [
+      "MvvmLight >= 5.4.1.1"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\danie\\.nuget\\packages\\": {}
@@ -13,11 +35,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner\\TourPlanner.csproj",
+      "projectUniqueName": "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner\\TourPlanner.csproj",
       "projectName": "TourPlanner",
-      "projectPath": "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner\\TourPlanner.csproj",
+      "projectPath": "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner\\TourPlanner.csproj",
       "packagesPath": "C:\\Users\\danie\\.nuget\\packages\\",
-      "outputPath": "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner\\obj\\",
+      "outputPath": "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\danie\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -45,6 +67,12 @@
     "frameworks": {
       "net5.0-windows7.0": {
         "targetAlias": "net5.0-windows",
+        "dependencies": {
+          "MvvmLight": {
+            "target": "Package",
+            "version": "[5.4.1.1, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
@@ -63,7 +91,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

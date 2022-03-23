@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "C/yrKh4M0mGfsM62N//QjpI8T1lLWO7ZICzMTrLdgGoj3FWYcbImWAt/bFS+DUT2Ix87Vg2QIA6Ku6Rix7X2Yg==",
+  "dgSpecHash": "cUmx7NWqfzVs5os04g4g6i52O6rpTEMubLu0eeknXMTidH8OYg/7M2MwuCs0HnrzP6iqwIHGNhKBvvCuSiFxrQ==",
   "success": true,
-  "projectFilePath": "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner\\TourPlanner.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner\\TourPlanner.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\danie\\.nuget\\packages\\mvvmlight\\5.4.1.1\\mvvmlight.5.4.1.1.nupkg.sha512"
+  ],
   "logs": []
 }

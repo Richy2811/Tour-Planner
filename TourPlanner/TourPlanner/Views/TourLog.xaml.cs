@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace TourPlanner.Views
 {
     /// <summary>
-    /// Interaktionslogik für MenuBar.xaml
+    /// Interaktionslogik für TourLog.xaml
     /// </summary>
-    public partial class MenuBar : UserControl
+    public partial class TourLog : UserControl
     {
-        public MenuBar()
+        public TourLog()
         {
             InitializeComponent();
         }
