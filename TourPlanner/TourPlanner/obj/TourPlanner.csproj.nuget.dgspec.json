@@ -39,12 +39,6 @@
       "frameworks": {
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
-          "dependencies": {
-            "MvvmLight": {
-              "target": "Package",
-              "version": "[5.4.1.1, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",

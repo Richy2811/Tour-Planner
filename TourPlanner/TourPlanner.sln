@@ -4,20 +4,43 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TourPlanner", "TourPlanner\TourPlanner.csproj", "{8795613D-0CF1-495A-9706-9E3F456F7546}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A563080D-93F1-430A-99F6-0BF9753F51CC} = {A563080D-93F1-430A-99F6-0BF9753F51CC}
+		{050523A6-48C8-46AB-A0CB-EE79DB2B31FB} = {050523A6-48C8-46AB-A0CB-EE79DB2B31FB}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TourPlanner.BL", "TourPlanner.BL\TourPlanner.BL.csproj", "{050523A6-48C8-46AB-A0CB-EE79DB2B31FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TourPlanner.BL", "TourPlanner.BL\TourPlanner.BL.csproj", "{050523A6-48C8-46AB-A0CB-EE79DB2B31FB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A563080D-93F1-430A-99F6-0BF9753F51CC} = {A563080D-93F1-430A-99F6-0BF9753F51CC}
+		{6EDBFD62-7ACD-492B-9EBB-FCD9CC0D2A70} = {6EDBFD62-7ACD-492B-9EBB-FCD9CC0D2A70}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TourPlanner.DAL", "TourPlanner.DAL\TourPlanner.DAL.csproj", "{6EDBFD62-7ACD-492B-9EBB-FCD9CC0D2A70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TourPlanner.DAL", "TourPlanner.DAL\TourPlanner.DAL.csproj", "{6EDBFD62-7ACD-492B-9EBB-FCD9CC0D2A70}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A563080D-93F1-430A-99F6-0BF9753F51CC} = {A563080D-93F1-430A-99F6-0BF9753F51CC}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TourPlanner.Models", "TourPlanner.Models\TourPlanner.Models.csproj", "{A563080D-93F1-430A-99F6-0BF9753F51CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TourPlanner.Models", "TourPlanner.Models\TourPlanner.Models.csproj", "{A563080D-93F1-430A-99F6-0BF9753F51CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TourPlanner.Test", "TourPlanner.Test\TourPlanner.Test.csproj", "{E3FA067F-5F28-4B32-ACF8-BB2D2337AEBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TourPlanner.Test", "TourPlanner.Test\TourPlanner.Test.csproj", "{E3FA067F-5F28-4B32-ACF8-BB2D2337AEBB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8795613D-0CF1-495A-9706-9E3F456F7546} = {8795613D-0CF1-495A-9706-9E3F456F7546}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TourPlanner.BL.Test", "TourPlanner.BL.Test\TourPlanner.BL.Test.csproj", "{8A5C93EC-E0E7-4471-ABB7-86CCBC256345}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TourPlanner.BL.Test", "TourPlanner.BL.Test\TourPlanner.BL.Test.csproj", "{8A5C93EC-E0E7-4471-ABB7-86CCBC256345}"
+	ProjectSection(ProjectDependencies) = postProject
+		{050523A6-48C8-46AB-A0CB-EE79DB2B31FB} = {050523A6-48C8-46AB-A0CB-EE79DB2B31FB}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TourPlanner.DAL.Test", "TourPlanner.DAL.Test\TourPlanner.DAL.Test.csproj", "{5C93FA40-1165-4AFD-B716-35AABFFD231C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TourPlanner.DAL.Test", "TourPlanner.DAL.Test\TourPlanner.DAL.Test.csproj", "{5C93FA40-1165-4AFD-B716-35AABFFD231C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6EDBFD62-7ACD-492B-9EBB-FCD9CC0D2A70} = {6EDBFD62-7ACD-492B-9EBB-FCD9CC0D2A70}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TourPlanner.Models.Test", "TourPlanner.Models.Test\TourPlanner.Models.Test.csproj", "{8A64E784-D74C-45DE-943E-83717EEFBCB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TourPlanner.Models.Test", "TourPlanner.Models.Test\TourPlanner.Models.Test.csproj", "{8A64E784-D74C-45DE-943E-83717EEFBCB0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A563080D-93F1-430A-99F6-0BF9753F51CC} = {A563080D-93F1-430A-99F6-0BF9753F51CC}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{7AC470E5-B9FE-43F4-A8B6-4F2D90780AF2}"
 EndProject

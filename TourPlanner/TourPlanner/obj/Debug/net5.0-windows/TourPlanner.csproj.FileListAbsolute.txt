@@ -54,3 +54,13 @@ C:\Users\danie\4. Semester\SWEN\SemesterProjekt\TourPlaner\TourPlanner\TourPlann
 C:\Users\danie\4. Semester\SWEN\SemesterProjekt\TourPlaner\TourPlanner\TourPlanner\obj\Debug\net5.0-windows\Views\TitleAndDescription.baml
 C:\Users\danie\4. Semester\SWEN\SemesterProjekt\TourPlaner\TourPlanner\TourPlanner\obj\Debug\net5.0-windows\Views\TourList.baml
 C:\Users\danie\4. Semester\SWEN\SemesterProjekt\TourPlaner\TourPlanner\TourPlanner\obj\Debug\net5.0-windows\Views\TourLog.baml
+D:\4. Semester\SWEN\Tour-Planner\TourPlanner\TourPlanner\obj\Debug\net5.0-windows\Views\MenuBar.g.cs
+D:\4. Semester\SWEN\Tour-Planner\TourPlanner\TourPlanner\obj\Debug\net5.0-windows\Views\SingleLineSearchBar.g.cs
+D:\4. Semester\SWEN\Tour-Planner\TourPlanner\TourPlanner\obj\Debug\net5.0-windows\Views\TitleAndDescription.g.cs
+D:\4. Semester\SWEN\Tour-Planner\TourPlanner\TourPlanner\obj\Debug\net5.0-windows\Views\TourList.g.cs
+D:\4. Semester\SWEN\Tour-Planner\TourPlanner\TourPlanner\obj\Debug\net5.0-windows\Views\TourLog.g.cs
+D:\4. Semester\SWEN\Tour-Planner\TourPlanner\TourPlanner\obj\Debug\net5.0-windows\Views\MenuBar.baml
+D:\4. Semester\SWEN\Tour-Planner\TourPlanner\TourPlanner\obj\Debug\net5.0-windows\Views\SingleLineSearchBar.baml
+D:\4. Semester\SWEN\Tour-Planner\TourPlanner\TourPlanner\obj\Debug\net5.0-windows\Views\TitleAndDescription.baml
+D:\4. Semester\SWEN\Tour-Planner\TourPlanner\TourPlanner\obj\Debug\net5.0-windows\Views\TourList.baml
+D:\4. Semester\SWEN\Tour-Planner\TourPlanner\TourPlanner\obj\Debug\net5.0-windows\Views\TourLog.baml
