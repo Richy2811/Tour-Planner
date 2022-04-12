@@ -2,6 +2,30 @@
   "version": 3,
   "targets": {
     "net5.0-windows7.0": {
+      "Npgsql/6.0.3": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "compile": {
+          "lib/net5.0/Npgsql.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Npgsql.dll": {}
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/6.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/System.Runtime.CompilerServices.Unsafe.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/System.Runtime.CompilerServices.Unsafe.dll": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
       "TourPlanner.BL/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
@@ -20,6 +44,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
+          "Npgsql": "6.0.3",
           "TourPlanner.Models": "1.0.0"
         },
         "compile": {
@@ -42,6 +67,54 @@
     }
   },
   "libraries": {
+    "Npgsql/6.0.3": {
+      "sha512": "yt/3XFRhHsJ01a4+qHM9+0mtitQ3DY2wJLyGP9vtvZa1cB1nSAw762GJGdSX3Bbc7wZKzeo4dc4drD3yvQe7gA==",
+      "type": "package",
+      "path": "npgsql/6.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net5.0/Npgsql.dll",
+        "lib/net5.0/Npgsql.xml",
+        "lib/net6.0/Npgsql.dll",
+        "lib/net6.0/Npgsql.xml",
+        "lib/netcoreapp3.1/Npgsql.dll",
+        "lib/netcoreapp3.1/Npgsql.xml",
+        "lib/netstandard2.0/Npgsql.dll",
+        "lib/netstandard2.0/Npgsql.xml",
+        "lib/netstandard2.1/Npgsql.dll",
+        "lib/netstandard2.1/Npgsql.xml",
+        "npgsql.6.0.3.nupkg.sha512",
+        "npgsql.nuspec",
+        "postgresql.png"
+      ]
+    },
+    "System.Runtime.CompilerServices.Unsafe/6.0.0": {
+      "sha512": "/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
+      "type": "package",
+      "path": "system.runtime.compilerservices.unsafe/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/net461/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/net6.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netcoreapp3.1/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netcoreapp3.1/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+        "system.runtime.compilerservices.unsafe.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
     "TourPlanner.BL/1.0.0": {
       "type": "project",
       "path": "../TourPlanner.BL/TourPlanner.BL.csproj",
@@ -61,6 +134,7 @@
   "projectFileDependencyGroups": {
     "net5.0-windows7.0": [
       "TourPlanner.BL >= 1.0.0",
+      "TourPlanner.DAL >= 1.0.0",
       "TourPlanner.Models >= 1.0.0"
     ]
   },
@@ -70,11 +144,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner\\TourPlanner.csproj",
+      "projectUniqueName": "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner\\TourPlanner.csproj",
       "projectName": "TourPlanner",
-      "projectPath": "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner\\TourPlanner.csproj",
+      "projectPath": "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner\\TourPlanner.csproj",
       "packagesPath": "C:\\Users\\danie\\.nuget\\packages\\",
-      "outputPath": "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner\\obj\\",
+      "outputPath": "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\danie\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -91,11 +165,14 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner.BL\\TourPlanner.BL.csproj": {
-              "projectPath": "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner.BL\\TourPlanner.BL.csproj"
+            "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner.BL\\TourPlanner.BL.csproj": {
+              "projectPath": "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner.BL\\TourPlanner.BL.csproj"
             },
-            "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner.Models\\TourPlanner.Models.csproj": {
-              "projectPath": "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner.Models\\TourPlanner.Models.csproj"
+            "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner.DAL\\TourPlanner.DAL.csproj": {
+              "projectPath": "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner.DAL\\TourPlanner.DAL.csproj"
+            },
+            "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner.Models\\TourPlanner.Models.csproj": {
+              "projectPath": "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner.Models\\TourPlanner.Models.csproj"
             }
           }
         }
@@ -127,7 +204,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

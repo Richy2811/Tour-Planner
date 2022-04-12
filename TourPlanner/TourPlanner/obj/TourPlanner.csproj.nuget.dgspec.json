@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner\\TourPlanner.csproj": {}
+    "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner\\TourPlanner.csproj": {}
   },
   "projects": {
-    "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner.BL\\TourPlanner.BL.csproj": {
+    "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner.BL\\TourPlanner.BL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner.BL\\TourPlanner.BL.csproj",
+        "projectUniqueName": "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner.BL\\TourPlanner.BL.csproj",
         "projectName": "TourPlanner.BL",
-        "projectPath": "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner.BL\\TourPlanner.BL.csproj",
+        "projectPath": "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner.BL\\TourPlanner.BL.csproj",
         "packagesPath": "C:\\Users\\danie\\.nuget\\packages\\",
-        "outputPath": "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner.BL\\obj\\",
+        "outputPath": "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner.BL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\danie\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,11 +28,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner.DAL\\TourPlanner.DAL.csproj": {
-                "projectPath": "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner.DAL\\TourPlanner.DAL.csproj"
+              "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner.DAL\\TourPlanner.DAL.csproj": {
+                "projectPath": "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner.DAL\\TourPlanner.DAL.csproj"
               },
-              "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner.Models\\TourPlanner.Models.csproj": {
-                "projectPath": "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner.Models\\TourPlanner.Models.csproj"
+              "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner.Models\\TourPlanner.Models.csproj": {
+                "projectPath": "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner.Models\\TourPlanner.Models.csproj"
               }
             }
           }
@@ -61,18 +61,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner.DAL\\TourPlanner.DAL.csproj": {
+    "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner.DAL\\TourPlanner.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner.DAL\\TourPlanner.DAL.csproj",
+        "projectUniqueName": "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner.DAL\\TourPlanner.DAL.csproj",
         "projectName": "TourPlanner.DAL",
-        "projectPath": "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner.DAL\\TourPlanner.DAL.csproj",
+        "projectPath": "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner.DAL\\TourPlanner.DAL.csproj",
         "packagesPath": "C:\\Users\\danie\\.nuget\\packages\\",
-        "outputPath": "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner.DAL\\obj\\",
+        "outputPath": "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\danie\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -89,8 +89,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner.Models\\TourPlanner.Models.csproj": {
-                "projectPath": "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner.Models\\TourPlanner.Models.csproj"
+              "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner.Models\\TourPlanner.Models.csproj": {
+                "projectPath": "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner.Models\\TourPlanner.Models.csproj"
               }
             }
           }
@@ -104,6 +104,12 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Npgsql": {
+              "target": "Package",
+              "version": "[6.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -119,18 +125,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner.Models\\TourPlanner.Models.csproj": {
+    "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner.Models\\TourPlanner.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner.Models\\TourPlanner.Models.csproj",
+        "projectUniqueName": "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner.Models\\TourPlanner.Models.csproj",
         "projectName": "TourPlanner.Models",
-        "projectPath": "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner.Models\\TourPlanner.Models.csproj",
+        "projectPath": "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner.Models\\TourPlanner.Models.csproj",
         "packagesPath": "C:\\Users\\danie\\.nuget\\packages\\",
-        "outputPath": "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner.Models\\obj\\",
+        "outputPath": "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner.Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\danie\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -173,18 +179,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner\\TourPlanner.csproj": {
+    "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner\\TourPlanner.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner\\TourPlanner.csproj",
+        "projectUniqueName": "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner\\TourPlanner.csproj",
         "projectName": "TourPlanner",
-        "projectPath": "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner\\TourPlanner.csproj",
+        "projectPath": "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner\\TourPlanner.csproj",
         "packagesPath": "C:\\Users\\danie\\.nuget\\packages\\",
-        "outputPath": "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner\\obj\\",
+        "outputPath": "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\danie\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -201,11 +207,14 @@
           "net5.0-windows7.0": {
             "targetAlias": "net5.0-windows",
             "projectReferences": {
-              "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner.BL\\TourPlanner.BL.csproj": {
-                "projectPath": "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner.BL\\TourPlanner.BL.csproj"
+              "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner.BL\\TourPlanner.BL.csproj": {
+                "projectPath": "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner.BL\\TourPlanner.BL.csproj"
               },
-              "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner.Models\\TourPlanner.Models.csproj": {
-                "projectPath": "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner.Models\\TourPlanner.Models.csproj"
+              "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner.DAL\\TourPlanner.DAL.csproj": {
+                "projectPath": "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner.DAL\\TourPlanner.DAL.csproj"
+              },
+              "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner.Models\\TourPlanner.Models.csproj": {
+                "projectPath": "C:\\Users\\danie\\4. Semester\\SWEN\\SemesterProjekt\\TourPlaner\\TourPlanner\\TourPlanner.Models\\TourPlanner.Models.csproj"
               }
             }
           }
@@ -237,7 +246,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

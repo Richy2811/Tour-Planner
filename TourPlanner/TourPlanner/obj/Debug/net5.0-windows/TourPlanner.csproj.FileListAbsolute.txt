@@ -71,3 +71,12 @@ D:\4. Semester\SWEN\Tour-Planner\TourPlanner\TourPlanner\bin\Debug\net5.0-window
 D:\4. Semester\SWEN\Tour-Planner\TourPlanner\TourPlanner\bin\Debug\net5.0-windows\TourPlanner.Models.pdb
 D:\4. Semester\SWEN\Tour-Planner\TourPlanner\TourPlanner\bin\Debug\net5.0-windows\TourPlanner.DAL.pdb
 D:\4. Semester\SWEN\Tour-Planner\TourPlanner\TourPlanner\obj\Debug\net5.0-windows\TourPlanner.csproj.CopyComplete
+C:\Users\danie\4. Semester\SWEN\SemesterProjekt\TourPlaner\TourPlanner\TourPlanner\bin\Debug\net5.0-windows\Npgsql.dll
+C:\Users\danie\4. Semester\SWEN\SemesterProjekt\TourPlaner\TourPlanner\TourPlanner\bin\Debug\net5.0-windows\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\danie\4. Semester\SWEN\SemesterProjekt\TourPlaner\TourPlanner\TourPlanner\bin\Debug\net5.0-windows\TourPlanner.BL.dll
+C:\Users\danie\4. Semester\SWEN\SemesterProjekt\TourPlaner\TourPlanner\TourPlanner\bin\Debug\net5.0-windows\TourPlanner.DAL.dll
+C:\Users\danie\4. Semester\SWEN\SemesterProjekt\TourPlaner\TourPlanner\TourPlanner\bin\Debug\net5.0-windows\TourPlanner.Models.dll
+C:\Users\danie\4. Semester\SWEN\SemesterProjekt\TourPlaner\TourPlanner\TourPlanner\bin\Debug\net5.0-windows\TourPlanner.BL.pdb
+C:\Users\danie\4. Semester\SWEN\SemesterProjekt\TourPlaner\TourPlanner\TourPlanner\bin\Debug\net5.0-windows\TourPlanner.Models.pdb
+C:\Users\danie\4. Semester\SWEN\SemesterProjekt\TourPlaner\TourPlanner\TourPlanner\bin\Debug\net5.0-windows\TourPlanner.DAL.pdb
+C:\Users\danie\4. Semester\SWEN\SemesterProjekt\TourPlaner\TourPlanner\TourPlanner\obj\Debug\net5.0-windows\TourPlanner.csproj.CopyComplete

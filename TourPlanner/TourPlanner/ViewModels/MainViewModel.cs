@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using TourPlanner.DAL;
 using TourPlanner.ViewModels.Abstract;
 
 
@@ -37,6 +38,8 @@ namespace TourPlanner.ViewModels
             this.tourLogViewModel = tourLogViewModel;
             
             LoadTours();
+
+            //Database Test = new();
         }
 
 
