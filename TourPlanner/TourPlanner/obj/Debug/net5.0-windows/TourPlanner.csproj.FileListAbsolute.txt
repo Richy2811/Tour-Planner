@@ -64,3 +64,10 @@ D:\4. Semester\SWEN\Tour-Planner\TourPlanner\TourPlanner\obj\Debug\net5.0-window
 D:\4. Semester\SWEN\Tour-Planner\TourPlanner\TourPlanner\obj\Debug\net5.0-windows\Views\TitleAndDescription.baml
 D:\4. Semester\SWEN\Tour-Planner\TourPlanner\TourPlanner\obj\Debug\net5.0-windows\Views\TourList.baml
 D:\4. Semester\SWEN\Tour-Planner\TourPlanner\TourPlanner\obj\Debug\net5.0-windows\Views\TourLog.baml
+D:\4. Semester\SWEN\Tour-Planner\TourPlanner\TourPlanner\bin\Debug\net5.0-windows\TourPlanner.BL.dll
+D:\4. Semester\SWEN\Tour-Planner\TourPlanner\TourPlanner\bin\Debug\net5.0-windows\TourPlanner.DAL.dll
+D:\4. Semester\SWEN\Tour-Planner\TourPlanner\TourPlanner\bin\Debug\net5.0-windows\TourPlanner.Models.dll
+D:\4. Semester\SWEN\Tour-Planner\TourPlanner\TourPlanner\bin\Debug\net5.0-windows\TourPlanner.BL.pdb
+D:\4. Semester\SWEN\Tour-Planner\TourPlanner\TourPlanner\bin\Debug\net5.0-windows\TourPlanner.Models.pdb
+D:\4. Semester\SWEN\Tour-Planner\TourPlanner\TourPlanner\bin\Debug\net5.0-windows\TourPlanner.DAL.pdb
+D:\4. Semester\SWEN\Tour-Planner\TourPlanner\TourPlanner\obj\Debug\net5.0-windows\TourPlanner.csproj.CopyComplete

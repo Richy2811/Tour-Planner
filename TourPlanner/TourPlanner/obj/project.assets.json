@@ -1,11 +1,68 @@
 {
   "version": 3,
   "targets": {
-    "net5.0-windows7.0": {}
+    "net5.0-windows7.0": {
+      "TourPlanner.BL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "TourPlanner.DAL": "1.0.0",
+          "TourPlanner.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/TourPlanner.BL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TourPlanner.BL.dll": {}
+        }
+      },
+      "TourPlanner.DAL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "TourPlanner.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/TourPlanner.DAL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TourPlanner.DAL.dll": {}
+        }
+      },
+      "TourPlanner.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/TourPlanner.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TourPlanner.Models.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "TourPlanner.BL/1.0.0": {
+      "type": "project",
+      "path": "../TourPlanner.BL/TourPlanner.BL.csproj",
+      "msbuildProject": "../TourPlanner.BL/TourPlanner.BL.csproj"
+    },
+    "TourPlanner.DAL/1.0.0": {
+      "type": "project",
+      "path": "../TourPlanner.DAL/TourPlanner.DAL.csproj",
+      "msbuildProject": "../TourPlanner.DAL/TourPlanner.DAL.csproj"
+    },
+    "TourPlanner.Models/1.0.0": {
+      "type": "project",
+      "path": "../TourPlanner.Models/TourPlanner.Models.csproj",
+      "msbuildProject": "../TourPlanner.Models/TourPlanner.Models.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net5.0-windows7.0": []
+    "net5.0-windows7.0": [
+      "TourPlanner.BL >= 1.0.0",
+      "TourPlanner.Models >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\danie\\.nuget\\packages\\": {}
@@ -33,7 +90,14 @@
       "frameworks": {
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner.BL\\TourPlanner.BL.csproj": {
+              "projectPath": "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner.BL\\TourPlanner.BL.csproj"
+            },
+            "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner.Models\\TourPlanner.Models.csproj": {
+              "projectPath": "D:\\4. Semester\\SWEN\\Tour-Planner\\TourPlanner\\TourPlanner.Models\\TourPlanner.Models.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
