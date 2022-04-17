@@ -7,15 +7,24 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <ListBox ItemsSource="{Binding TourList}" Grid.ColumnSpan="2" Margin="4,0,1,0">
-            <DockPanel VerticalAlignment="Top">
-                <Label Content="Tours" />
-                <Button Margin="2.5,2.5,2.5,2.5" Command="{Binding AddTour}">+</Button>
-                <Button Margin="2.5,2.5,2.5,2.5" Command="{Binding DeleteTour}">-</Button>
-                <Button Margin="2.5,2.5,2.5,2.5" Content="[]"/>
-            </DockPanel>
-            <ListBoxItem>- Tour1</ListBoxItem>
-            <ListBoxItem>- Tour2</ListBoxItem>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <DockPanel VerticalAlignment="Top" Grid.Row="0" Background="White">
+            <Label Content="Tours" />
+            <Button Margin="2.5,2.5,2.5,2.5" Command="{Binding AddTour}">+</Button>
+            <Button Margin="2.5,2.5,2.5,2.5" Command="{Binding DeleteTour}">-</Button>
+            <Button Margin="2.5,2.5,2.5,2.5" Content="[]"/>
+        </DockPanel>
+        <ListBox SelectedItem="{Binding SelectedItem}" ItemsSource="{Binding TourListCollection}" Grid.ColumnSpan="2" Grid.Row="2" Margin="4,0,1,0" SelectionChanged="ListBox_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding TourName}"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
         </ListBox>
     </Grid>
 </UserControl>
