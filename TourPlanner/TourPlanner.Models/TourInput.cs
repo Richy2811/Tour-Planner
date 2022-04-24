@@ -8,18 +8,14 @@ using System.Threading.Tasks;
 
 namespace TourPlanner.Models
 {
-    public class TourData : INotifyPropertyChanged
+    public class TourInput : INotifyPropertyChanged
     {
         private string _tourName;
         private string _tourDescription;
         private string _start;
         private string _destination;
         private string _transportType;
-        private int _tourDistance;
-        private int _timeEstimation;
-        private string _imagePath;
 
-        public bool IsUpdating { get; set; }
         public string TourName
         {
             get => _tourName;
@@ -64,42 +60,6 @@ namespace TourPlanner.Models
                 _transportType = value;
                 OnPropertyChanged(nameof(TransportType));
             }
-        }
-        public int TourDistance
-        {
-            get => _tourDistance;
-            set
-            {
-                _tourDistance = value;
-                OnPropertyChanged(nameof(TourDistance));
-            }
-        }
-        public int Time
-        {
-            get => _timeEstimation;
-            set
-            {
-                _timeEstimation = value;
-                OnPropertyChanged(nameof(Time));
-            }
-        }
-        public string ImagePath
-        {
-            get => _imagePath;
-            set
-            {
-                _imagePath = value;
-                OnPropertyChanged(nameof(ImagePath));
-            }
-        }
-
-        public TourData(string tourName, string tourDescription, string start, string destination, string transportType)
-        {
-            TourName = tourName;
-            TourDescription = tourDescription;
-            Start = start;
-            Destination = destination;
-            TransportType = transportType;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
