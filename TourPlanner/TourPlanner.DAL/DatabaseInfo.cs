@@ -23,7 +23,6 @@ namespace TourPlanner.DAL
         private void ReadInfo()
         {
             string[] info;
-            int i = 0;
             string FileToRead = AppDomain.CurrentDomain.BaseDirectory + @"..\..\..\..\database.txt";
             IEnumerable<string> line = File.ReadLines(FileToRead);
             Console.WriteLine(string.Join(Environment.NewLine, line));
