@@ -9,7 +9,7 @@ namespace TourPlanner.BL
 {
     public class SynchronizeViewModelData
     {
-        public static void SynchronizeTitleDescriptionTourList(TourInput tourInfo, TourData tourSelection)
+        public static void SynchronizeTitleDescriptionTourList(TourData tourInfo, TourData tourSelection)
         {
             //if a tour in the list is being selected and a property of tourInfo changed through user input
             if ((tourSelection != null) && (tourSelection.IsUpdating == false))
@@ -17,10 +17,15 @@ namespace TourPlanner.BL
                 //set all properties of current selection in tour list to reflect the changes in the input fields
                 tourSelection.TourName = tourInfo.TourName;
                 tourSelection.TourDescription = tourInfo.TourDescription;
+                tourSelection.Start = tourInfo.Start;
+                tourSelection.Destination = tourInfo.Destination;
+                tourSelection.TransportType = tourInfo.TransportType;
+                tourSelection.TourDistance = tourInfo.TourDistance;
+                tourSelection.Time = tourInfo.Time;
             }
         }
 
-        public static void SynchronizeTourListTitleDescription(TourData tourSelection, TourInput tourInfo)
+        public static void SynchronizeTourListTitleDescription(TourData tourSelection, TourData tourInfo)
         {
             if (tourSelection != null)
             {
@@ -29,6 +34,11 @@ namespace TourPlanner.BL
 
                 tourInfo.TourName = tourSelection.TourName;
                 tourInfo.TourDescription = tourSelection.TourDescription;
+                tourInfo.Start = tourSelection.Start;
+                tourInfo.Destination = tourSelection.Destination;
+                tourInfo.TransportType = tourSelection.TransportType;
+                tourInfo.TourDistance = tourSelection.TourDistance;
+                tourInfo.Time = tourSelection.Time;
 
                 tourSelection.IsUpdating = false;
             }

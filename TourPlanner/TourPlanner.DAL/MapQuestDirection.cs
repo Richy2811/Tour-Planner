@@ -8,9 +8,9 @@ using Newtonsoft.Json.Linq;
 
 namespace TourPlanner.DAL
 {
-    class MapQuestDirection
+    public class MapQuestDirection
     {
-        public async Task<JObject> GetRouteInfoAsync(string path)
+        public static async Task<JObject> GetRouteInfoAsync(string path)
         {
             JObject routeInfo = null;
             HttpClient client = new HttpClient();

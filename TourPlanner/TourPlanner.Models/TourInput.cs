@@ -15,6 +15,7 @@ namespace TourPlanner.Models
         private string _start;
         private string _destination;
         private string _transportType;
+        private string _imagePath;
 
         public string TourName
         {
@@ -59,6 +60,15 @@ namespace TourPlanner.Models
             {
                 _transportType = value;
                 OnPropertyChanged(nameof(TransportType));
+            }
+        }
+        public string ImagePath
+        {
+            get => _imagePath;
+            set
+            {
+                _imagePath = value;
+                OnPropertyChanged(nameof(ImagePath));
             }
         }
 

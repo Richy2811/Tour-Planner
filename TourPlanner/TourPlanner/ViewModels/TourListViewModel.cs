@@ -42,7 +42,7 @@ namespace TourPlanner.ViewModels
             i = 0;
             AddTour = new RelayCommand((_) =>
             {
-                TourListCollection.Add(new TourData($"SampleTour{i++}", "Sampledescription", "Samplestart", "Sampledestination", "Sampletransporttype"));
+                TourListCollection.Add(new TourData($"SampleTour{i++}", "Bicycle"));
             });
 
             DeleteTour = new RelayCommand((_) =>
