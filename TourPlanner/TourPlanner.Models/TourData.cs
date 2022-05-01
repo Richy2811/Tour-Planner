@@ -17,7 +17,7 @@ namespace TourPlanner.Models
         private string _transportType;
         private decimal _tourDistance;
         private string _timeEstimation;
-        private string _imagePath;
+        private string _imageName;
 
         public bool IsUpdating { get; set; }
         public string TourName
@@ -83,13 +83,13 @@ namespace TourPlanner.Models
                 OnPropertyChanged(nameof(Time));
             }
         }
-        public string ImagePath
+        public string ImageName
         {
-            get => _imagePath;
+            get => _imageName;
             set
             {
-                _imagePath = value;
-                OnPropertyChanged(nameof(ImagePath));
+                _imageName = value;
+                OnPropertyChanged(nameof(ImageName));
             }
         }
 

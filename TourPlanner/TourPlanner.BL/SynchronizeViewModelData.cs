@@ -22,6 +22,7 @@ namespace TourPlanner.BL
                 tourSelection.TransportType = tourInfo.TransportType;
                 tourSelection.TourDistance = tourInfo.TourDistance;
                 tourSelection.Time = tourInfo.Time;
+                tourSelection.ImageName = tourInfo.ImageName;
             }
         }
 
@@ -39,6 +40,7 @@ namespace TourPlanner.BL
                 tourInfo.TransportType = tourSelection.TransportType;
                 tourInfo.TourDistance = tourSelection.TourDistance;
                 tourInfo.Time = tourSelection.Time;
+                tourInfo.ImageName = tourSelection.ImageName;
 
                 tourSelection.IsUpdating = false;
             }

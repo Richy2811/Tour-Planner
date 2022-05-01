@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 using TourPlanner.DAL;
 using TourPlanner.Models;
 using TourPlanner.ViewModels.Abstract;
@@ -35,6 +36,8 @@ namespace TourPlanner.ViewModels
             tourListViewModel.OnSelectUpdate += (_, tourSelection) =>
             {
                 SynchronizeViewModelData.SynchronizeTourListTitleDescription(tourSelection, titleAndDescriptionViewModel.TourInfo);
+                //update image
+                titleAndDescriptionViewModel.UpdateTourImage();
             };
         }
     }

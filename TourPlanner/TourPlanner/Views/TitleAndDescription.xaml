@@ -22,10 +22,10 @@
         </DockPanel>
         <DockPanel Visibility="{Binding RouteDisplay}">
             <Label Content="From:"/>
-            <TextBox HorizontalAlignment="Left" Text="{Binding TourInfo.Start, UpdateSourceTrigger=PropertyChanged}" Margin="5" Width="100"/>
+            <TextBox HorizontalAlignment="Left" Text="{Binding TourInfo.Start, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="5" Width="100"/>
 
             <Label Content="To:"/>
-            <TextBox HorizontalAlignment="Left" Text="{Binding TourInfo.Destination, UpdateSourceTrigger=PropertyChanged}" Margin="5" Width="100"/>
+            <TextBox HorizontalAlignment="Left" Text="{Binding TourInfo.Destination, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="5" Width="100"/>
 
             <Label Content="Transport:" VerticalAlignment="Center"/>
             <ComboBox HorizontalAlignment="Left" SelectedValue="{Binding TourInfo.TransportType, Mode=TwoWay}" SelectedValuePath="Content" VerticalContentAlignment="Center" MinWidth="80" Margin="5">
@@ -36,19 +36,19 @@
 
         <StackPanel Orientation="Horizontal" Visibility="{Binding RouteDisplay}">
             <Label Content="Tour Distance:"/>
-            <TextBlock Text="{Binding TourInfo.TourDistance}" VerticalAlignment="Center" MinWidth="80" Background="LightGray"/>
+            <TextBlock Text="{Binding TourInfo.TourDistance, StringFormat={}{0} km}" VerticalAlignment="Center" MinWidth="80" Background="LightGray"/>
 
             <Label Content="Estimated Time:"/>
             <TextBlock Text="{Binding TourInfo.Time}" VerticalAlignment="Center" MinWidth="80" Background="LightGray"/>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Visibility="{Binding RouteDisplay}">
-            <Button Content="Save Tour" Command="{Binding SaveTour}"></Button>
+            <Button Content="Save Tour" Command="{Binding SaveTour}" Padding="10, 5"></Button>
         </StackPanel>
 
         <DockPanel Visibility="{Binding RouteDisplay}">
             <Label Content="Map View"></Label>
-            <!--<Image Source="{Binding TourInfo.ImagePath}"></Image>-->
+            <Image Width="200" Height="200" HorizontalAlignment="Left" Source="{Binding StaticMapImage}"/>
         </DockPanel>
     </StackPanel>
 </UserControl>

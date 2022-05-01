@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
+using System.IO;
 using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Input;
+using System.Windows;
+using System.Windows.Media.Imaging;
 using Newtonsoft.Json.Linq;
 using TourPlanner.DAL;
 using TourPlanner.Models;
@@ -19,10 +15,8 @@ namespace TourPlanner.ViewModels
         private TourData _tourInfo = new TourData(null, null);
         private string _routeDisplay;
         private string _descriptionDisplay;
-        private string _mapQuestUrl;
-        private string _mapQuestParameters;
-        private Task<JObject> _mapQuestJsonReturn;
-        
+        private BitmapImage _staticMapImage;
+
         public TourData TourInfo
         {
             get => _tourInfo;
@@ -45,16 +39,34 @@ namespace TourPlanner.ViewModels
                 OnPropertyChanged(nameof(DescriptionDisplay));
             }
         }
+        public BitmapImage StaticMapImage
+        {
+            get => _staticMapImage;
+            set
+            {
+                _staticMapImage = value;
+                OnPropertyChanged(nameof(StaticMapImage));
+            }
+        }
 
         public RelayCommand ShowRoute { get; }
         public RelayCommand ShowDescription { get; }
         public RelayCommand SaveTour { get; }
 
+        private string GetUriPath(string imageName)
+        {
+            return Path.GetFullPath($"{Environment.CurrentDirectory}../../../../TourImages/{imageName}");
+        }
+
+        public void UpdateTourImage()
+        {
+            StaticMapImage = new BitmapImage(new Uri(GetUriPath(TourInfo.ImageName ?? "Placeholder.png"), UriKind.Absolute));
+        }
+
+        public event EventHandler<TourData> OnchangeUpdate;
+
         public TitleAndDescriptionViewModel()
         {
-            //subscribe to property-changed-handler
-            _tourInfo.PropertyChanged += PropertyChangedHandler;
-
             //bind "Route" and "Description" buttons to set visibility of components
             ShowRoute = new RelayCommand((_) =>
             {
@@ -70,42 +82,39 @@ namespace TourPlanner.ViewModels
 
             SaveTour = new RelayCommand((_) =>
             {
-                _mapQuestUrl = "http://www.mapquestapi.com/directions/v2/route";
-                string transportType = _tourInfo.TransportType;
-                switch (transportType)
+                //retrieve mapquest return value as json object
+                Task<JObject> mapQuestJsonReturn = Task.Run(() => MapQuestDirection.GetRouteInfoAsync(TourInfo));
+
+                //check if route was successfully generated
+                if ((int)mapQuestJsonReturn.Result["info"]["statuscode"] != 0)
                 {
-                    case "Bicycle":
-                        transportType = "bicycle";
-                        break;
-
-                    case "Walk":
-                        transportType = "pedestrian";
-                        break;
-
-                    default:
-                        transportType = "bicycle";
-                        break;
+                    //show error message to user
+                    MessageBox.Show("Unable to create tour using given parameters", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
                 }
-                _mapQuestParameters = $"?key=8Ls9YtZjQESK1vRFuUIEgCyRjAwWP3SI&from={_tourInfo.Start}&to={_tourInfo.Destination}&unit=k&routeType={transportType}&locale=de_DE";
-                _mapQuestJsonReturn = Task.Run(() => MapQuestDirection.GetRouteInfoAsync(_mapQuestUrl + _mapQuestParameters));
 
-                _tourInfo.TourDistance = (decimal)_mapQuestJsonReturn.Result["route"]["distance"];
-                _tourInfo.Time = (string)_mapQuestJsonReturn.Result["route"]["formattedTime"];
-                string sessionId = (string)_mapQuestJsonReturn.Result["route"]["sessionId"];
+                //store generated values of interest
+                _tourInfo.TourDistance = Math.Round((decimal)mapQuestJsonReturn.Result["route"]["distance"], 2);
+                _tourInfo.Time = (string)mapQuestJsonReturn.Result["route"]["formattedTime"];
 
-                //image generation
+                //store image locally and save filename as reference
+                string sessionId = (string)mapQuestJsonReturn.Result["route"]["sessionId"];
+                _tourInfo.ImageName = MapQuestDirection.GetRouteImageName(sessionId);
+
+                //update image
+                UpdateTourImage();
+
+                //synchronize input values with tour list
+                OnchangeUpdate?.Invoke(this, TourInfo);
             });
 
             //set initial visibility of components
             RouteDisplay = "Visible";
             DescriptionDisplay = "Collapsed";
-        }
 
-        public event EventHandler<TourData> OnchangeUpdate;
-        private void PropertyChangedHandler(object sender, PropertyChangedEventArgs e)
-        {
-            //if property of TourInfo changes -> update view
-            OnchangeUpdate?.Invoke(this, TourInfo);
+            //set placeholder tour image
+            TourInfo.ImageName = "Placeholder.png";
+            UpdateTourImage();
         }
     }
 }
