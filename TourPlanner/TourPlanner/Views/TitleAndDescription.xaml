@@ -1,20 +1,54 @@
 ﻿<UserControl x:Class="TourPlanner.Views.TitleAndDescription"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TourPlanner.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel VerticalAlignment="Top">
         <DockPanel>
-            <Label Content="Title:" />
-            <TextBox HorizontalAlignment="Left" Text="{Binding CurrentTitle, UpdateSourceTrigger=PropertyChanged}" Margin="5,5,5,5" Width="100" />
+            <Label Content="Title:"/>
+            <TextBox HorizontalAlignment="Left" Text="{Binding TourInfo.TourName, UpdateSourceTrigger=PropertyChanged}" Margin="5,5,5,5" Width="100" />
         </DockPanel>
+
         <StackPanel Orientation="Horizontal">
-            <Button Margin="5,5,5,5" DockPanel.Dock="Left" Content="Route"/>
-            <Button Margin="5,5,5,5" DockPanel.Dock="Left" Content="Description"/>
+            <Button DockPanel.Dock="Left" Command="{Binding ShowRoute}" Content="Route" Margin="5"/>
+            <Button DockPanel.Dock="Left" Command="{Binding ShowDescription}" Content="Description" Margin="5" />
         </StackPanel>
-        <TextBox HorizontalAlignment="Left" Text="" Margin="5,5,5,5" Width="500" Height="100" Grid.Column="0" Grid.ColumnSpan="3"/>
+
+        <DockPanel Visibility="{Binding DescriptionDisplay}">
+            <TextBox HorizontalAlignment="Left" Text="{Binding TourInfo.TourDescription, UpdateSourceTrigger=PropertyChanged}" Margin="5" Width="500" Height="100"/>
+        </DockPanel>
+        <DockPanel Visibility="{Binding RouteDisplay}">
+            <Label Content="From:"/>
+            <TextBox HorizontalAlignment="Left" Text="{Binding TourInfo.Start, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="5" Width="100"/>
+
+            <Label Content="To:"/>
+            <TextBox HorizontalAlignment="Left" Text="{Binding TourInfo.Destination, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="5" Width="100"/>
+
+            <Label Content="Transport:" VerticalAlignment="Center"/>
+            <ComboBox HorizontalAlignment="Left" SelectedValue="{Binding TourInfo.TransportType, Mode=TwoWay}" SelectedValuePath="Content" VerticalContentAlignment="Center" MinWidth="80" Margin="5">
+                <ComboBoxItem Content="Bicycle"></ComboBoxItem>
+                <ComboBoxItem Content="Walk"></ComboBoxItem>
+            </ComboBox>
+        </DockPanel>
+
+        <StackPanel Orientation="Horizontal" Visibility="{Binding RouteDisplay}">
+            <Label Content="Tour Distance:"/>
+            <TextBlock Text="{Binding TourInfo.TourDistance, StringFormat={}{0} km}" VerticalAlignment="Center" MinWidth="80" Background="LightGray"/>
+
+            <Label Content="Estimated Time:"/>
+            <TextBlock Text="{Binding TourInfo.Time}" VerticalAlignment="Center" MinWidth="80" Background="LightGray"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Visibility="{Binding RouteDisplay}">
+            <Button Content="Save Tour" Command="{Binding SaveTour}" Padding="10, 5"></Button>
+        </StackPanel>
+
+        <DockPanel Visibility="{Binding RouteDisplay}">
+            <Label Content="Map View"></Label>
+            <Image Width="200" Height="200" HorizontalAlignment="Left" Source="{Binding StaticMapImage}"/>
+        </DockPanel>
     </StackPanel>
 </UserControl>
