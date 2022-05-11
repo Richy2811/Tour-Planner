@@ -24,6 +24,11 @@ namespace TourPlanner.DAL
         {
             string[] info;
             string FileToRead = AppDomain.CurrentDomain.BaseDirectory + @"..\..\..\..\database.txt";
+            if (!File.Exists(FileToRead))
+            {
+                throw new ArgumentException("Does not exist.", nameof(FileToRead));
+            }
+
             IEnumerable<string> line = File.ReadLines(FileToRead);
             Console.WriteLine(string.Join(Environment.NewLine, line));
             info = line.ToArray();

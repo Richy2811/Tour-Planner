@@ -1,0 +1,4 @@
+create database tourplanner;
+create table tours(id int primary key not null, name text not null, description text, _from text, _to text, transport_type text, distance int, estimated_time text, route_information text);
+create table logs(id int primary key not null, tour_id int, date_time text, comment text, difficulty text, total_time text, rating text);
+INSERT INTO logs VALUES (2, 1, 'test-date', 'test-comment', 'test-difficulty', 'test-time', 'test-rating');

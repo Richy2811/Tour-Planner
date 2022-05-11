@@ -11,14 +11,18 @@ namespace TourPlanner
     public class LogEntry : INotifyPropertyChanged
     {
         private string _date;
+        private string _comment;
+        private string _difficulty;
         private string _duration;
-        private string _distance;
+        private string _rating;
 
-        public LogEntry(string date, string duration, string distance)
+        public LogEntry(string date, string comment, string difficulty, string duration, string rating)
         {
             this.Date = date;
+            this.Comment = comment;
+            this.Difficulty = difficulty;
             this.Duration = duration;
-            this.Distance = distance;
+            this.Rating = rating;
         }
 
         public string Date
@@ -31,6 +35,25 @@ namespace TourPlanner
             }
         }
 
+        public string Comment
+        {
+            get => this._comment;
+            set
+            {
+                this._comment = value;
+                this.OnPropertyChanged(nameof(Comment));
+            }
+        }
+
+        public string Difficulty
+        {
+            get => this._difficulty;
+            set
+            {
+                this._difficulty = value;
+                this.OnPropertyChanged(nameof(Difficulty));
+            }
+        }
         public string Duration
         {
             get => this._duration;
@@ -41,13 +64,13 @@ namespace TourPlanner
             }
         }
 
-        public string Distance
+        public string Rating
         {
-            get => this._distance;
+            get => this._rating;
             set
             {
-                this._distance = value;
-                this.OnPropertyChanged(nameof(Distance));
+                this._rating = value;
+                this.OnPropertyChanged(nameof(Rating));
             }
         }
 

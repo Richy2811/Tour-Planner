@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TourPlanner.ViewModels.Abstract;
+using TourPlanner.BL;
 
 namespace TourPlanner.ViewModels
 {
@@ -20,7 +21,7 @@ namespace TourPlanner.ViewModels
         {
             AddLog = new RelayCommand((_) =>
             {
-                LogData.Add(new LogEntry("empty", "empty", "empty"));
+                LogData.Add(new LogEntry("empty", "empty", "empty", "empty", "10"));
 
             });
 
@@ -35,10 +36,25 @@ namespace TourPlanner.ViewModels
             LoadLogs();
         }
 
-        private void LoadLogs()
+        private async void LoadLogs()
         {
-            LogData.Add(new LogEntry("10.02.2022", "01:20:34", "100km"));
-            LogData.Add(new LogEntry("12.03.2022", "02:30:22", "230km"));
+            //Dictionary<string, object> test = {("id", "1"), }
+
+            Dictionary<string, object> data = await GetData.GetAllTourLogData();
+
+            int index = 0;
+            if(data != null)
+            {
+                bool exists = data.ContainsKey("date_time" + index);
+                while (exists)
+                {
+                    LogData.Add(new LogEntry((string)data["date_time" + index], (string)data["comment" + index], (string)data["difficulty" + index], (string)data["total_time" + index], (string)data["rating" + index]));
+                    index++;
+                    exists = data.ContainsKey("date_time" + index);
+
+                }
+
+            }
         }
     }
 }

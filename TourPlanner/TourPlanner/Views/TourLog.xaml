@@ -38,7 +38,9 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Date}" Header="Date" Width="100"/>
                 <DataGridTextColumn Binding="{Binding Duration}" Header="Duration" Width="100"/>
-                <DataGridTextColumn Binding="{Binding Distance}" Header="Distance" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Comment}" Header="Distance" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Difficulty}" Header="Distance" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Rating}" Header="Distance" Width="100"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
