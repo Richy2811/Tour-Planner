@@ -17,9 +17,12 @@ namespace TourPlanner.BL
             return data;
         }
 
-        public static async void WriteLogData(Dictionary<string,object> data)
+        public static async Task<Dictionary<string, object>> GetAllTours()
         {
-            await Database.Base.Write("logs", data);
+            Dictionary<string, object> data = null;
+            //Dictionary<string, object> restrictions = 
+            data = await Database.Base.Read("*", "tours");
+            return data;
         }
     }
 }

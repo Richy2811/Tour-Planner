@@ -7,6 +7,7 @@ using Newtonsoft.Json.Linq;
 using TourPlanner.DAL;
 using TourPlanner.Models;
 using TourPlanner.ViewModels.Abstract;
+using TourPlanner.BL;
 
 namespace TourPlanner.ViewModels
 {
@@ -89,7 +90,7 @@ namespace TourPlanner.ViewModels
                 if ((int)mapQuestJsonReturn.Result["info"]["statuscode"] != 0)
                 {
                     //show error message to user
-                    MessageBox.Show("Unable to create tour using given parameters", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Unable to create tour using given parameters!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
@@ -101,11 +102,10 @@ namespace TourPlanner.ViewModels
                 string sessionId = (string)mapQuestJsonReturn.Result["route"]["sessionId"];
                 _tourInfo.ImageName = MapQuestDirection.GetRouteImageName(sessionId);
 
-                //update image
-                UpdateTourImage();
+                //save TourInfo in DB
+                SaveTourInfo(_tourInfo);
 
-                //synchronize input values with tour list
-                OnchangeUpdate?.Invoke(this, TourInfo);
+                
             });
 
             //set initial visibility of components
@@ -115,6 +115,30 @@ namespace TourPlanner.ViewModels
             //set placeholder tour image
             TourInfo.ImageName = "Placeholder.png";
             UpdateTourImage();
+
+
+        }
+
+        private async void SaveTourInfo(TourData Info)
+        {
+            if (Info.TourDescription == null)
+                Info.TourDescription = "";
+            bool success = await SaveData.SaveTourInfo(Info);
+
+            if (success)
+            {
+                //update image
+                UpdateTourImage();
+
+                //synchronize input values with tour list
+                OnchangeUpdate?.Invoke(this, TourInfo);
+                MessageBox.Show("Successfully saved Tour!", "Saved", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show("Tour Name already exists!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
         }
     }
 }

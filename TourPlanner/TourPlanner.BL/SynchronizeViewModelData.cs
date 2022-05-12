@@ -15,6 +15,7 @@ namespace TourPlanner.BL
             if ((tourSelection != null) && (tourSelection.IsUpdating == false))
             {
                 //set all properties of current selection in tour list to reflect the changes in the input fields
+                tourSelection.ID = tourInfo.ID;
                 tourSelection.TourName = tourInfo.TourName;
                 tourSelection.TourDescription = tourInfo.TourDescription;
                 tourSelection.Start = tourInfo.Start;
@@ -33,6 +34,7 @@ namespace TourPlanner.BL
                 //prevent SynchronizeTitleDescriptionTourList from changing properties of current selection as long as the selection is updating input fields
                 tourSelection.IsUpdating = true;
 
+                tourInfo.ID = tourSelection.ID;
                 tourInfo.TourName = tourSelection.TourName;
                 tourInfo.TourDescription = tourSelection.TourDescription;
                 tourInfo.Start = tourSelection.Start;

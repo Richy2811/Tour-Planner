@@ -10,6 +10,8 @@
         <DockPanel>
             <Label Content="Title:"/>
             <TextBox HorizontalAlignment="Left" Text="{Binding TourInfo.TourName, UpdateSourceTrigger=PropertyChanged}" Margin="5,5,5,5" Width="100" />
+            <Label Content="ID:"/>
+            <Label HorizontalAlignment="Left" Content="{Binding TourInfo.ID, UpdateSourceTrigger=PropertyChanged}"/>
         </DockPanel>
 
         <StackPanel Orientation="Horizontal">

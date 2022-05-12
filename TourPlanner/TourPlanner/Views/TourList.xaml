@@ -21,7 +21,10 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding TourName}"></TextBlock>
+                        <TextBlock Text="{Binding ID}" ></TextBlock>
+                        <TextBlock Text=": " ></TextBlock>
+                        <TextBlock Text="{Binding TourName}" ></TextBlock>
+
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

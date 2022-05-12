@@ -10,6 +10,7 @@ namespace TourPlanner.Models
 {
     public class TourData : INotifyPropertyChanged
     {
+        private int _id;
         private string _tourName;
         private string _tourDescription;
         private string _start;
@@ -20,6 +21,16 @@ namespace TourPlanner.Models
         private string _imageName;
 
         public bool IsUpdating { get; set; }
+
+        public int ID
+        {
+            get => _id;
+            set
+            {
+                _id = value;
+                OnPropertyChanged(nameof(ID));
+            }
+        }
         public string TourName
         {
             get => _tourName;
@@ -97,6 +108,27 @@ namespace TourPlanner.Models
         {
             TourName = tourName;
             TransportType = transportType;
+        }
+
+        public TourData(int id, string tourName, string transportType)
+        {
+            ID = id;
+            TourName = tourName;
+            TransportType = transportType;
+        }
+
+        public TourData(int id, string tourName, string description, string start, string destination, string transportType, decimal distance, string estimated_time, string imageName)
+        {
+            ID = id;
+            TourName = tourName;
+            TourDescription = description;
+            Start = start;
+            Destination = destination;
+            TransportType = transportType;
+            TourDistance = distance;
+            Time = estimated_time;
+            ImageName = imageName;
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
