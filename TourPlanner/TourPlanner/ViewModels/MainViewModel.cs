@@ -36,6 +36,7 @@ namespace TourPlanner.ViewModels
             this.tourListViewModel = tourListViewModel;
             this.tourLogViewModel = tourLogViewModel;
 
+
             titleAndDescriptionViewModel.OnchangeUpdate += (_, tourInput) =>
             {
                 SynchronizeViewModelData.SynchronizeTitleDescriptionTourList(tourInput, tourListViewModel.SelectedItem);
@@ -46,7 +47,15 @@ namespace TourPlanner.ViewModels
                 SynchronizeViewModelData.SynchronizeTourListTitleDescription(tourSelection, titleAndDescriptionViewModel.TourInfo);
                 //update image
                 titleAndDescriptionViewModel.UpdateTourImage();
+                
             };
+
+            tourListViewModel.OnchangeUpdateID += (_, id) =>
+            {
+                tourLogViewModel.TourID = id;
+                tourLogViewModel.LoadLogs(id);
+            };
+
         }
     }
 }

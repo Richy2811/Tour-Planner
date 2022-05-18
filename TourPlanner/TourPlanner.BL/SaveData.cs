@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,6 +44,43 @@ namespace TourPlanner.BL
                 return success;
             }
 
+        }
+
+        public static async Task<bool> SaveLogInfo(ObservableCollection<LogEntry> LogInfo, int tourID)
+        {
+
+            foreach(LogEntry Info in LogInfo)
+            {
+                Dictionary<string, object> restrictions = new()
+                {
+                    { "id", Info.ID },
+                };
+
+                Dictionary<string, object> exists = await Database.Base.Read("*", "logs", restrictions);
+
+                Dictionary<string, object> Dict = new()
+                {
+                    { "id", Info.ID },
+                    { "tour_id", tourID },
+                    { "date_time", Info.Date },
+                    { "comment", Info.Comment },
+                    { "difficulty", Info.Difficulty },
+                    { "total_time", Info.Duration },
+                    { "rating", Info.Rating }
+                };
+
+                if (exists == null)
+                {
+                    bool success = await Database.Base.Write("logs", Dict);
+                }
+                
+                else
+                {
+                    bool success = await Database.Base.Update("logs", Dict, restrictions);
+                }
+
+            }
+            return true;
         }
     }
 }

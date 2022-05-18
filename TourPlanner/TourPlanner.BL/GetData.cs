@@ -9,11 +9,15 @@ namespace TourPlanner.BL
 {
     public static class GetData
     {
-        public static async Task<Dictionary<string, object>> GetAllTourLogData()
+        public static async Task<Dictionary<string, object>> GetAllTourLogData(int tourID)
         {
             Dictionary<string, object> data = null;
+            Dictionary<string, object> restrictions = new()
+            {
+                { "tour_id", tourID },
+            };
             //Dictionary<string, object> restrictions = 
-            data = await Database.Base.Read("*", "logs");
+            data = await Database.Base.Read("*", "logs", restrictions);
             return data;
         }
 

@@ -47,5 +47,6 @@ namespace TourPlanner.BL
                 tourSelection.IsUpdating = false;
             }
         }
+
     }
 }
