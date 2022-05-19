@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using TourPlanner.DAL;
@@ -35,6 +36,24 @@ namespace TourPlanner.ViewModels
             this.titleAndDescriptionViewModel = titleAndDescriptionViewModel;
             this.tourListViewModel = tourListViewModel;
             this.tourLogViewModel = tourLogViewModel;
+
+            menuBarViewModel.OnClickGenerate += (_, exportSingle) =>
+            {
+                switch (exportSingle ? ExportPDF.GeneratePdfSingle(tourListViewModel.SelectedItem) : ExportPDF.GeneratePdfAll())
+                {
+                    case 0:
+                        MessageBox.Show("PDF document successfully created", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                        break;
+
+                    case 1:
+                        MessageBox.Show("Please select a tour in the list first", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        break;
+
+                    case 2:
+                        MessageBox.Show("Tour contains invalid values. Make sure to save the tour first", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        break;
+                }
+            };
 
             titleAndDescriptionViewModel.OnchangeUpdate += (_, tourInput) =>
             {
