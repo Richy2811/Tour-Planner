@@ -17,6 +17,22 @@ namespace TourPlanner.BL
                 { "id", tourID }
             };
             bool success = await Database.Base.Delete("tours", restrictions);
+            Dictionary<string, object> restrictions_logs = new()
+            {
+                { "id", tourID }
+            };
+            success = await Database.Base.Delete("logs", restrictions_logs);
+
+            return success;
+        }
+
+        public static async Task<bool> DeleteLog(int LogID)
+        {
+            Dictionary<string, object> restrictions = new()
+            {
+                { "id", LogID }
+            };
+            bool success = await Database.Base.Delete("logs", restrictions);
 
             return success;
         }

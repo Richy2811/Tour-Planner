@@ -18,20 +18,22 @@
             <Button Margin="2.5" Width="20"  Command="{Binding AddLog}">+</Button>
             <Button Margin="2.5" Width="20" IsDefault="True" Command="{Binding DeleteLog}">-</Button>
             <Button Margin="2.5" Width="20" Content="[]"/>
+            <Button Margin="2.5" Width="40" Command="{Binding SaveLog}" Content="Save"/>
         </StackPanel>
 
         <DataGrid Grid.Row="1" Grid.ColumnSpan="3"
                   Margin="5" 
                   ItemsSource="{Binding LogData}"
+                  SelectedItem="{Binding SelectedItem}"
                   AutoGenerateColumns="False" 
                   AlternatingRowBackground="LightGray"
                   CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Date}" Header="Date" Width="100"/>
                 <DataGridTextColumn Binding="{Binding Duration}" Header="Duration" Width="100"/>
-                <DataGridTextColumn Binding="{Binding Comment}" Header="Distance" Width="100"/>
-                <DataGridTextColumn Binding="{Binding Difficulty}" Header="Distance" Width="100"/>
-                <DataGridTextColumn Binding="{Binding Rating}" Header="Distance" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Comment}" Header="Comment" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Difficulty}" Header="Difficulty" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Rating}" Header="Rating" Width="100"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

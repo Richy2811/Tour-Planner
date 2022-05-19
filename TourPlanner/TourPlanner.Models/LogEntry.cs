@@ -10,19 +10,31 @@ namespace TourPlanner
 {
     public class LogEntry : INotifyPropertyChanged
     {
+        private int _id;
         private string _date;
         private string _comment;
         private string _difficulty;
         private string _duration;
         private string _rating;
 
-        public LogEntry(string date, string comment, string difficulty, string duration, string rating)
+        public LogEntry(int id, string date, string comment, string difficulty, string duration, string rating)
         {
+            this.ID = id;
             this.Date = date;
             this.Comment = comment;
             this.Difficulty = difficulty;
             this.Duration = duration;
             this.Rating = rating;
+        }
+
+        public int ID
+        {
+            get => _id;
+            set
+            {
+                _id = value;
+                OnPropertyChanged(nameof(ID));
+            }
         }
 
         public string Date

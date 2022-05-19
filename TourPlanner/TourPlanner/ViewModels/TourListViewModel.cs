@@ -26,10 +26,12 @@ namespace TourPlanner.ViewModels
                 _selectedItem = value;
                 OnPropertyChanged(nameof(SelectedItem));
                 OnSelectUpdate?.Invoke(this, SelectedItem);
+                OnchangeUpdateID?.Invoke(this, SelectedItem.ID);
             }
         }
 
         public event EventHandler<TourData> OnSelectUpdate;
+        public event EventHandler<int> OnchangeUpdateID;
 
         public RelayCommand AddTour { get; }
         public RelayCommand DeleteTour { get; }
