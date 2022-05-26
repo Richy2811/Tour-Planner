@@ -2,24 +2,33 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TourPlanner.ViewModels.Abstract;
 using TourPlanner.BL;
 using System.Windows;
 using System.IO;
-using TourPlanner.Models;
+using System.Threading.Tasks;
 
 namespace TourPlanner.ViewModels
 {
     public class TourLogViewModel : BaseViewModel
     {
-        public ObservableCollection<LogEntry> LogData { get; }
-           = new ObservableCollection<LogEntry>();
+        public ObservableCollection<LogEntry> LogData { get; } = new ObservableCollection<LogEntry>();
+        
+        private string _logSearchText;
+        public string LogSearchText
+        {
+            get => _logSearchText;
+            set
+            {
+                _logSearchText = value;
+                OnPropertyChanged(nameof(LogSearchText));
+            }
+        }
 
         public RelayCommand AddLog { get; }
         public RelayCommand DeleteLog { get; }
         public RelayCommand SaveLog { get; }
+        public RelayCommand SearchLog { get; }
 
         private int _tourID;
 
@@ -39,8 +48,6 @@ namespace TourPlanner.ViewModels
             }
         }
 
-
-
         public int TourID
         {
             get => _tourID;
@@ -53,7 +60,8 @@ namespace TourPlanner.ViewModels
 
         public TourLogViewModel()
         {
-
+            //search text must not be null
+            _logSearchText = "";
 
             AddLog = new RelayCommand((_) =>
             {
@@ -77,18 +85,10 @@ namespace TourPlanner.ViewModels
                 }
 
                 LogData.Add(new LogEntry( id,"empty", "empty", "empty", "empty", "10"));
-
-
-            });
-
-            SaveLog = new RelayCommand((_) =>
-            {
-                SaveLogs();
             });
 
             DeleteLog = new RelayCommand((_) =>
             {
-
                 if (SelectedItem == null)
                 {
                     return;
@@ -103,13 +103,34 @@ namespace TourPlanner.ViewModels
                         break;
                     }
                 }
-
             });
 
-            
+            SaveLog = new RelayCommand((_) =>
+            {
+                SaveLogs();
+            });
+
+            SearchLog = new RelayCommand(async (_) =>
+            {
+                //reload all log data into collection
+                await LoadLogs(_tourID);
+                
+                for (int i = LogData.Count - 1; i >= 0; i--)
+                {
+                    //if none of the strings in a log matches the search string (case insensitive) -> remove it from view
+                    if (LogData[i].Date.IndexOf(_logSearchText, StringComparison.CurrentCultureIgnoreCase) < 0  &&
+                        LogData[i].Duration.IndexOf(_logSearchText, StringComparison.CurrentCultureIgnoreCase) < 0 &&
+                        LogData[i].Comment.IndexOf(_logSearchText, StringComparison.CurrentCultureIgnoreCase) < 0 &&
+                        LogData[i].Difficulty.IndexOf(_logSearchText, StringComparison.CurrentCultureIgnoreCase) < 0 &&
+                        LogData[i].Rating.IndexOf(_logSearchText, StringComparison.CurrentCultureIgnoreCase) < 0)
+                    {
+                        LogData.Remove(LogData[i]);
+                    }
+                }
+            });
         }
 
-        public async void LoadLogs(int id)
+        public async Task LoadLogs(int id)
         {
             LogData.Clear();
             Dictionary<string, object> data = await GetData.GetAllTourLogData(id);
@@ -120,12 +141,17 @@ namespace TourPlanner.ViewModels
                 bool exists = data.ContainsKey("date_time" + index);
                 while (exists)
                 {
-                    LogData.Add(new LogEntry((int)data["id" + index], (string)data["date_time" + index], (string)data["comment" + index], (string)data["difficulty" + index], (string)data["total_time" + index], (string)data["rating" + index]));
+                    //tour selection changed after starting async method
+                    if (id != _tourID)
+                    {
+                        //end task prematurely if tour selection changes (prevents log entries from previous id being loaded in addition)
+                        return;
+                    }
+
+                    this.LogData.Add(new LogEntry((int)data["id" + index], (string)data["date_time" + index], (string)data["comment" + index], (string)data["difficulty" + index], (string)data["total_time" + index], (string)data["rating" + index]));
                     index++;
                     exists = data.ContainsKey("date_time" + index);
-
                 }
-
             }
         }
 

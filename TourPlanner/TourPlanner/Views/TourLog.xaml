@@ -12,28 +12,36 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Label Margin="5" Content="Logs:" Grid.Row="0" Grid.Column="0"/>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-            <Button Margin="2.5" Width="20"  Command="{Binding AddLog}">+</Button>
-            <Button Margin="2.5" Width="20" IsDefault="True" Command="{Binding DeleteLog}">-</Button>
-            <Button Margin="2.5" Width="20" Content="[]"/>
-            <Button Margin="2.5" Width="40" Command="{Binding SaveLog}" Content="Save"/>
-        </StackPanel>
+        <DockPanel Grid.Row="0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Label Margin="2.5" Content="Logs"/>
+                <Button Margin="2.5" Width="20" Height="20" Command="{Binding AddLog}" Content="+"/>
+                    <Button Margin="2.5" Width="20" Height="20" IsDefault="True" Command="{Binding DeleteLog}" Content="-"/>
+                    <Button Margin="2.5" Width="20" Height="20" Content="[]"/>
+                <Button Margin="2.5" Width="40" Height="20" Command="{Binding SaveLog}" Content="Save"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Margin="2.5" Content="Search"/>
+                <TextBox Margin="2.5" HorizontalAlignment="Left" Width="100" Height="20" Text="{Binding LogSearchText, UpdateSourceTrigger=PropertyChanged}"/>
+                <Button Margin="2.5" HorizontalAlignment="Left" Width="30" Height="20" Content="Go" Command="{Binding SearchLog}"/>
+            </StackPanel>
+        </DockPanel>
 
         <DataGrid Grid.Row="1" Grid.ColumnSpan="3"
-                  Margin="5" 
+                  Margin="5"
                   ItemsSource="{Binding LogData}"
                   SelectedItem="{Binding SelectedItem}"
-                  AutoGenerateColumns="False" 
+                  AutoGenerateColumns="False"
                   AlternatingRowBackground="LightGray"
-                  CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="False">
+                  CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="False" SelectionChanged="DataGrid_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Date}" Header="Date" Width="100"/>
-                <DataGridTextColumn Binding="{Binding Duration}" Header="Duration" Width="100"/>
-                <DataGridTextColumn Binding="{Binding Comment}" Header="Comment" Width="100"/>
-                <DataGridTextColumn Binding="{Binding Difficulty}" Header="Difficulty" Width="100"/>
-                <DataGridTextColumn Binding="{Binding Rating}" Header="Rating" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Date}" Header="Date" MinWidth="100" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Duration}" Header="Duration" MinWidth="100" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Comment}" Header="Comment" MinWidth="100" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Difficulty}" Header="Difficulty" MinWidth="100" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Rating}" Header="Rating" MinWidth="100" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

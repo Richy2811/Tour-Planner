@@ -12,9 +12,6 @@
     <Compile Update="Views\MenuBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\SingleLineSearchBar.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Views\TitleAndDescription.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -30,9 +27,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\MenuBar.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\SingleLineSearchBar.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\TitleAndDescription.xaml">

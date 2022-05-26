@@ -64,7 +64,7 @@ namespace TourPlanner.ViewModels
             StaticMapImage = new BitmapImage(new Uri(GetUriPath(TourInfo.ImageName ?? "Placeholder.png"), UriKind.Absolute));
         }
 
-        public event EventHandler<TourData> OnchangeUpdate;
+        public event EventHandler<TourData> OnSaveUpdate;
 
         public TitleAndDescriptionViewModel()
         {
@@ -131,7 +131,7 @@ namespace TourPlanner.ViewModels
                 UpdateTourImage();
 
                 //synchronize input values with tour list
-                OnchangeUpdate?.Invoke(this, TourInfo);
+                OnSaveUpdate?.Invoke(this, TourInfo);
                 MessageBox.Show("Successfully saved Tour!", "Saved", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else

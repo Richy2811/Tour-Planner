@@ -19,7 +19,6 @@ namespace TourPlanner
             // MVVM:
             //var searchBarViewModel = new SearchBarViewModel();
             var menuBarViewModel = new MenuBarViewModel();
-            var singleLineSearchBarViewModel = new SingleLineSearchBarViewModel();
             var titleAndDescriptionViewModel = new TitleAndDescriptionViewModel();
             var tourListViewModel = new TourListViewModel();
             var tourLogViewModel = new TourLogViewModel();
@@ -27,9 +26,8 @@ namespace TourPlanner
 
             var wnd = new MainWindow
             {
-                DataContext = new MainViewModel(menuBarViewModel, singleLineSearchBarViewModel, titleAndDescriptionViewModel, tourListViewModel, tourLogViewModel),
+                DataContext = new MainViewModel(menuBarViewModel, titleAndDescriptionViewModel, tourListViewModel, tourLogViewModel),
                 MenuBar = { DataContext = menuBarViewModel},
-                SingleLineSearchBar = { DataContext = singleLineSearchBarViewModel },
                 TourList = { DataContext = tourListViewModel},
                 TitleAndDescription = { DataContext = titleAndDescriptionViewModel},
                 TourLog = { DataContext = tourLogViewModel}

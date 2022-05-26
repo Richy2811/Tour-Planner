@@ -21,18 +21,16 @@ namespace TourPlanner.ViewModels
 
 
         private readonly MenuBarViewModel menuBarViewModel;
-        private readonly SingleLineSearchBarViewModel singleLineSearchBarViewModel;
         private readonly TitleAndDescriptionViewModel titleAndDescriptionViewModel;
         private readonly TourListViewModel tourListViewModel;
         private readonly TourLogViewModel tourLogViewModel;
 
-        public MainViewModel(MenuBarViewModel menuBarViewModel, SingleLineSearchBarViewModel singleLineSearchBarViewModel, TitleAndDescriptionViewModel titleAndDescriptionViewModel, TourListViewModel tourListViewModel, TourLogViewModel tourLogViewModel)
+        public MainViewModel(MenuBarViewModel menuBarViewModel, TitleAndDescriptionViewModel titleAndDescriptionViewModel, TourListViewModel tourListViewModel, TourLogViewModel tourLogViewModel)
         {
             
             logger.Debug("created()");
 
             this.menuBarViewModel = menuBarViewModel;
-            this.singleLineSearchBarViewModel = singleLineSearchBarViewModel;
             this.titleAndDescriptionViewModel = titleAndDescriptionViewModel;
             this.tourListViewModel = tourListViewModel;
             this.tourLogViewModel = tourLogViewModel;
@@ -55,7 +53,7 @@ namespace TourPlanner.ViewModels
                 }
             };
 
-            titleAndDescriptionViewModel.OnchangeUpdate += (_, tourInput) =>
+            titleAndDescriptionViewModel.OnSaveUpdate += (_, tourInput) =>
             {
                 SynchronizeViewModelData.SynchronizeTitleDescriptionTourList(tourInput, tourListViewModel.SelectedItem);
             };
@@ -68,10 +66,10 @@ namespace TourPlanner.ViewModels
                 
             };
 
-            tourListViewModel.OnchangeUpdateID += (_, id) =>
+            tourListViewModel.OnchangeUpdateID += async (_, id) =>
             {
                 tourLogViewModel.TourID = id;
-                tourLogViewModel.LoadLogs(id);
+                await tourLogViewModel.LoadLogs(id);
             };
 
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using TourPlanner.BL;
 using TourPlanner.Models;
 using TourPlanner.ViewModels.Abstract;
@@ -12,8 +13,19 @@ namespace TourPlanner.ViewModels
     public class TourListViewModel : BaseViewModel
     {
         public ObservableCollection<TourData> TourListCollection { get; set; } = new ObservableCollection<TourData>();
-        private TourData _selectedItem;
 
+        private string _tourSearchText;
+        public string TourSearchText
+        {
+            get => _tourSearchText;
+            set
+            {
+                _tourSearchText = value;
+                OnPropertyChanged(nameof(TourSearchText));
+            }
+        }
+
+        private TourData _selectedItem;
         public TourData SelectedItem
         {
             get => _selectedItem;
@@ -35,9 +47,13 @@ namespace TourPlanner.ViewModels
 
         public RelayCommand AddTour { get; }
         public RelayCommand DeleteTour { get; }
+        public RelayCommand SearchTour { get; }
 
         public TourListViewModel()
         {
+            //search text must not be null
+            _tourSearchText = "";
+
             ReadToursFromDB();
             AddTour = new RelayCommand((_) =>
             {
@@ -80,10 +96,28 @@ namespace TourPlanner.ViewModels
                     }
                 }
             });
+
+            SearchTour = new RelayCommand(async (_) =>
+            {
+                //reload all tour entries into collection
+                await ReadToursFromDB();
+
+                for (int i = TourListCollection.Count - 1; i >= 0; i--)
+                {
+                    //remove tour from collection if its name matches the search string
+                    if (TourListCollection[i].TourName.IndexOf(_tourSearchText, StringComparison.CurrentCultureIgnoreCase) < 0)
+                    {
+                        TourListCollection.Remove(TourListCollection[i]);
+                    }
+                }
+            });
         }
 
-        private async void ReadToursFromDB()
+        private async Task ReadToursFromDB()
         {
+            _selectedItem = null;
+            TourListCollection.Clear();
+
             Dictionary<string, object> data = await GetData.GetAllTours();
 
             int index = 0;
@@ -98,7 +132,6 @@ namespace TourPlanner.ViewModels
                     exists = data.ContainsKey("id" + index);
 
                 }
-
             }
         }
 
