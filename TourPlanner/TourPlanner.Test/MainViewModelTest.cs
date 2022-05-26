@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace TourPlanner.DAL.Test
+namespace TourPlanner.Test
 {
     public class Tests
     {
@@ -9,10 +9,6 @@ namespace TourPlanner.DAL.Test
         {
         }
 
-        [Test]
-        public void Test1()
-        {
-            Assert.Pass();
-        }
+        
     }
 }
