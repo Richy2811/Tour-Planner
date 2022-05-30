@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using TourPlanner.Models;
@@ -15,7 +11,7 @@ namespace TourPlanner.DAL
     {
         private const string _mapQuestKey = "8Ls9YtZjQESK1vRFuUIEgCyRjAwWP3SI";
 
-        public static async Task<JObject> GetRouteInfoAsync(TourData tourInfo)
+        public static async Task<JObject> GetRouteJsonAsync(TourData tourInfo)
         {
             string transportType = tourInfo.TransportType;
             switch (transportType)

@@ -85,10 +85,10 @@ namespace TourPlanner.ViewModels
             SaveTour = new RelayCommand((_) =>
             {
                 //retrieve mapquest return value as json object
-                Task<JObject> mapQuestJsonReturn = Task.Run(() => MapQuestDirection.GetRouteInfoAsync(TourInfo));
+                JObject mapQuestJsonReturn = GetRouteInfo.GetJson(TourInfo);
 
                 //check if route was successfully generated
-                if ((int)mapQuestJsonReturn.Result["info"]["statuscode"] != 0)
+                if ((int)mapQuestJsonReturn["info"]["statuscode"] != 0)
                 {
                     //show error message to user
                     MessageBox.Show("Unable to create tour using given parameters!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -96,17 +96,15 @@ namespace TourPlanner.ViewModels
                 }
 
                 //store generated values of interest
-                _tourInfo.TourDistance = Math.Round((decimal)mapQuestJsonReturn.Result["route"]["distance"], 2);
-                _tourInfo.Time = (string)mapQuestJsonReturn.Result["route"]["formattedTime"];
+                _tourInfo.TourDistance = Math.Round((decimal)mapQuestJsonReturn["route"]["distance"], 2);
+                _tourInfo.Time = (string)mapQuestJsonReturn["route"]["formattedTime"];
 
                 //store image locally and save filename as reference
-                string sessionId = (string)mapQuestJsonReturn.Result["route"]["sessionId"];
-                _tourInfo.ImageName = MapQuestDirection.GetRouteImageName(sessionId);
+                string sessionId = (string)mapQuestJsonReturn["route"]["sessionId"];
+                _tourInfo.ImageName = GetRouteInfo.GetImageName(sessionId);
 
                 //save TourInfo in DB
                 SaveTourInfo(_tourInfo);
-
-                
             });
 
             //set initial visibility of components
