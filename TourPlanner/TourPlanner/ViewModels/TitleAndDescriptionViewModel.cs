@@ -8,6 +8,7 @@ using TourPlanner.DAL;
 using TourPlanner.Models;
 using TourPlanner.ViewModels.Abstract;
 using TourPlanner.BL;
+using System.Collections.Generic;
 
 namespace TourPlanner.ViewModels
 {
@@ -123,6 +124,7 @@ namespace TourPlanner.ViewModels
         {
             if (Info.TourDescription == null)
                 Info.TourDescription = "";
+            
             bool success = await SaveData.SaveTourInfo(Info);
 
             if (success)

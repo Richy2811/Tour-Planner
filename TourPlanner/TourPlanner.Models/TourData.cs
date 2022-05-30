@@ -19,6 +19,9 @@ namespace TourPlanner.Models
         private decimal _tourDistance;
         private string _timeEstimation;
         private string _imageName;
+        private string _popularity;
+        private string _childFriendliness;
+        private string _favourite;
 
         public bool IsUpdating { get; set; }
 
@@ -104,10 +107,43 @@ namespace TourPlanner.Models
             }
         }
 
+        public string Popularity
+        {
+            get => _popularity;
+            set
+            {
+                _popularity = value;
+                OnPropertyChanged(nameof(Popularity));
+            }
+        }
+
+        public string ChildFriendliness
+        {
+            get => _childFriendliness;
+            set
+            {
+                _childFriendliness = value;
+                OnPropertyChanged(nameof(ChildFriendliness));
+            }
+        }
+
+        public string Favourite
+        {
+            get => _favourite;
+            set
+            {
+                _favourite = value;
+                OnPropertyChanged(nameof(Favourite));
+            }
+        }
+
         public TourData(string tourName, string transportType)
         {
             TourName = tourName;
             TransportType = transportType;
+            Favourite = "false";
+            ChildFriendliness = "low";
+            Popularity = "low";
         }
 
         public TourData(int id, string tourName, string transportType)
@@ -115,9 +151,12 @@ namespace TourPlanner.Models
             ID = id;
             TourName = tourName;
             TransportType = transportType;
+            Favourite = "false";
+            ChildFriendliness = "low";
+            Popularity = "low";
         }
 
-        public TourData(int id, string tourName, string description, string start, string destination, string transportType, decimal distance, string estimated_time, string imageName)
+        public TourData(int id, string tourName, string description, string start, string destination, string transportType, decimal distance, string estimated_time, string imageName, string popularity, string childFriendliness, string favourite)
         {
             ID = id;
             TourName = tourName;
@@ -128,6 +167,9 @@ namespace TourPlanner.Models
             TourDistance = distance;
             Time = estimated_time;
             ImageName = imageName;
+            Popularity = popularity;
+            ChildFriendliness = childFriendliness;
+            Favourite = favourite;
 
         }
 

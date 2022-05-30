@@ -17,7 +17,7 @@
                 <Label Content="Tours"/>
                 <Button Margin="2.5" Command="{Binding AddTour}" Height="20" Width="20" Content="+"/>
                 <Button Margin="2.5" Command="{Binding DeleteTour}" Height="20" Width="20" Content="-"/>
-                <Button Margin="2.5" Height="20" Width="20">[]</Button>
+                <Button Margin="2.5" Command="{Binding ShowFav}" Height="20" Width="20" Content="{Binding FavButton}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">

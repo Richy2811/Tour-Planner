@@ -15,6 +15,8 @@ namespace TourPlanner.ViewModels
         public ObservableCollection<TourData> TourListCollection { get; set; } = new ObservableCollection<TourData>();
 
         private string _tourSearchText;
+
+        public string _favButton = "<3";
         public string TourSearchText
         {
             get => _tourSearchText;
@@ -24,6 +26,18 @@ namespace TourPlanner.ViewModels
                 OnPropertyChanged(nameof(TourSearchText));
             }
         }
+
+        public string FavButton
+        {
+            get => _favButton;
+            set
+            {
+                _favButton = value;
+                OnPropertyChanged(nameof(FavButton));
+            }
+        }
+
+
 
         private TourData _selectedItem;
         public TourData SelectedItem
@@ -48,6 +62,7 @@ namespace TourPlanner.ViewModels
         public RelayCommand AddTour { get; }
         public RelayCommand DeleteTour { get; }
         public RelayCommand SearchTour { get; }
+        public RelayCommand ShowFav { get; }
 
         public TourListViewModel()
         {
@@ -111,6 +126,31 @@ namespace TourPlanner.ViewModels
                     }
                 }
             });
+
+            ShowFav = new RelayCommand(async (_) =>
+            {
+                if(FavButton == "<3")
+                {
+                    FavButton = "all";
+                    await ReadToursFromDB();
+
+                    for (int i = TourListCollection.Count - 1; i >= 0; i--)
+                    {
+                        //remove tour from collection if its name matches the search string
+                        if (TourListCollection[i].Favourite == "false")
+                        {
+                            TourListCollection.Remove(TourListCollection[i]);
+                        }
+                    }
+                }
+
+                else if(FavButton == "all")
+                {
+                    FavButton = "<3";
+                    await ReadToursFromDB();
+                }
+
+            });
         }
 
         private async Task ReadToursFromDB()
@@ -126,8 +166,10 @@ namespace TourPlanner.ViewModels
                 bool exists = data.ContainsKey("id" + index);
                 while (exists)
                 {
+                    string friendliness = await ComputeTourLogInfo.ComputeChildFriendliness((int)data["id" + index]);
+                    string popularity = await ComputeTourLogInfo.ComputePopularity((int)data["id" + index]);
                     TourListCollection.Add(new TourData((int)data["id" + index], (string)data["name" + index], (string)data["description" + index], (string)data["start" + index], (string)data["destination" + index], 
-                        (string)data["transport_type" + index], (int)data["distance" + index], (string)data["estimated_time" + index], (string)data["image" + index]));
+                        (string)data["transport_type" + index], (int)data["distance" + index], (string)data["estimated_time" + index], (string)data["image" + index], popularity, friendliness, (string)data["favourite" + index]));
                     index++;
                     exists = data.ContainsKey("id" + index);
 

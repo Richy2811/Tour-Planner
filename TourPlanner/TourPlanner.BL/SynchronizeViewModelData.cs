@@ -24,6 +24,9 @@ namespace TourPlanner.BL
                 tourSelection.TourDistance = tourInfo.TourDistance;
                 tourSelection.Time = tourInfo.Time;
                 tourSelection.ImageName = tourInfo.ImageName;
+                tourSelection.Popularity = tourInfo.Popularity;
+                tourSelection.ChildFriendliness = tourInfo.ChildFriendliness;
+                tourSelection.Favourite = tourInfo.Favourite;
             }
         }
 
@@ -43,6 +46,9 @@ namespace TourPlanner.BL
                 tourInfo.TourDistance = tourSelection.TourDistance;
                 tourInfo.Time = tourSelection.Time;
                 tourInfo.ImageName = tourSelection.ImageName;
+                tourInfo.Popularity = tourSelection.Popularity;
+                tourInfo.ChildFriendliness = tourSelection.ChildFriendliness;
+                tourInfo.Favourite = tourSelection.Favourite;
 
                 tourSelection.IsUpdating = false;
             }

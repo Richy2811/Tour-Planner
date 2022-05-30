@@ -30,7 +30,10 @@ namespace TourPlanner.BL
                 { "transport_type", TourInfo.TransportType },
                 { "distance", TourInfo.TourDistance },
                 { "estimated_time", TourInfo.Time },
-                { "image", TourInfo.ImageName }
+                { "image", TourInfo.ImageName },
+                { "popularity", TourInfo.Popularity },
+                { "childfriendlyness", TourInfo.ChildFriendliness },
+                { "favourite", TourInfo.Favourite }
             };
 
             if (exists == null)

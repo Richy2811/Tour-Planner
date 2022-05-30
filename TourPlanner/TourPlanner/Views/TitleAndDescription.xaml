@@ -20,6 +20,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <DockPanel>
@@ -27,7 +28,12 @@
 				<TextBox HorizontalAlignment="Left" Text="{Binding TourInfo.TourName, UpdateSourceTrigger=PropertyChanged}" Margin="5,5,5,5" Width="100" />
 				<Label Content="ID:"/>
 				<Label HorizontalAlignment="Left" Content="{Binding TourInfo.ID, UpdateSourceTrigger=PropertyChanged}"/>
-			</DockPanel>
+                <Label Content="Favourite:"/>
+                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Center" SelectedValue="{Binding TourInfo.Favourite, Mode=TwoWay}" SelectedValuePath="Content" VerticalContentAlignment="Center" MinWidth="80" Margin="5">
+                    <ComboBoxItem Content="false"></ComboBoxItem>
+                    <ComboBoxItem Content="true"></ComboBoxItem>
+                </ComboBox>
+            </DockPanel>
 
             <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0, 5">
                 <Button DockPanel.Dock="Left" Command="{Binding ShowRoute}" Content="Route" Margin="5"/>
@@ -52,7 +58,14 @@
                 </ComboBox>
             </DockPanel>
 
-            <StackPanel Orientation="Horizontal" Visibility="{Binding RouteDisplay}" Grid.Row="3" Margin="0, 5">
+            <DockPanel Visibility="{Binding RouteDisplay}" Grid.Row="3" Margin="0, 5">
+                <Label Content="Popularity:" VerticalAlignment="Center"/>
+                <Label HorizontalAlignment="Left" Content="{Binding TourInfo.Popularity, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Content="child-friendliness:" VerticalAlignment="Center"/>
+                <Label HorizontalAlignment="Left" Content="{Binding TourInfo.ChildFriendliness, UpdateSourceTrigger=PropertyChanged}"/>
+            </DockPanel>
+
+            <StackPanel Orientation="Horizontal" Visibility="{Binding RouteDisplay}" Grid.Row="4" Margin="0, 5">
                 <Label Content="Tour Distance:"/>
                 <TextBlock Text="{Binding TourInfo.TourDistance, StringFormat={}{0} km}" VerticalAlignment="Center" MinWidth="80" Background="LightGray"/>
 
@@ -60,7 +73,7 @@
                 <TextBlock Text="{Binding TourInfo.Time}" VerticalAlignment="Center" MinWidth="80" Background="LightGray"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Visibility="{Binding RouteDisplay}" Grid.Row="4" Margin="0, 5">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Visibility="{Binding RouteDisplay}" Grid.Row="5" Margin="0, 5">
                 <Button Content="Save Tour" Command="{Binding SaveTour}" Padding="10, 5"></Button>
             </StackPanel>
         </Grid>

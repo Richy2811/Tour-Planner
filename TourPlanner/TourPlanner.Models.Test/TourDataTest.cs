@@ -21,9 +21,12 @@ namespace TourPlanner.Models.Test
             decimal expectedTourDistance = 100;
             string expectedTime = "testTime";
             string expectedImageName = "testImageName";
+            string expectedpopularity = "testPopularity";
+            string expectedfriendliness = "testFriendliness";
+            string expectedfavourite = "testFavourite";
 
             // Act
-            TourData testTour = new(expectedId, expectedTourName, expectedDescription, expectedStart, expectedDestination, expectedTransportType, expectedTourDistance, expectedTime, expectedImageName);
+            TourData testTour = new(expectedId, expectedTourName, expectedDescription, expectedStart, expectedDestination, expectedTransportType, expectedTourDistance, expectedTime, expectedImageName, expectedpopularity, expectedfriendliness, expectedfavourite);
 
             int actualId = testTour.ID;
             string actualTourName = testTour.TourName;

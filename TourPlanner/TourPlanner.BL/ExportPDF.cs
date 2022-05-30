@@ -101,7 +101,7 @@ namespace TourPlanner.BL
             while (dbTourCollectionReturn.Result.ContainsKey("id" + index))
             {
                 tourEntries.Add(new TourData((int)dbTourCollectionReturn.Result["id" + index], (string)dbTourCollectionReturn.Result["name" + index], (string)dbTourCollectionReturn.Result["description" + index], (string)dbTourCollectionReturn.Result["start" + index], (string)dbTourCollectionReturn.Result["destination" + index],
-                    (string)dbTourCollectionReturn.Result["transport_type" + index], (int)dbTourCollectionReturn.Result["distance" + index], (string)dbTourCollectionReturn.Result["estimated_time" + index], (string)dbTourCollectionReturn.Result["image" + index]));
+                    (string)dbTourCollectionReturn.Result["transport_type" + index], (int)dbTourCollectionReturn.Result["distance" + index], (string)dbTourCollectionReturn.Result["estimated_time" + index], (string)dbTourCollectionReturn.Result["image" + index], (string)dbTourCollectionReturn.Result["popularity" + index], (string)dbTourCollectionReturn.Result["childfriendlyness" + index], (string)dbTourCollectionReturn.Result["favourite" + index]));
                 index++;
             }
 

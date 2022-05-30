@@ -7,7 +7,7 @@ using TourPlanner.DAL;
 
 namespace TourPlanner.BL
 {
-    public static class GetData
+    public class GetData
     {
         public static async Task<Dictionary<string, object>> GetAllTourLogData(int tourID)
         {
@@ -16,7 +16,6 @@ namespace TourPlanner.BL
             {
                 { "tour_id", tourID },
             };
-            //Dictionary<string, object> restrictions = 
             data = await Database.Base.Read("*", "logs", restrictions);
             return data;
         }
@@ -24,7 +23,6 @@ namespace TourPlanner.BL
         public static async Task<Dictionary<string, object>> GetAllTours()
         {
             Dictionary<string, object> data = null;
-            //Dictionary<string, object> restrictions = 
             data = await Database.Base.Read("*", "tours");
             return data;
         }
