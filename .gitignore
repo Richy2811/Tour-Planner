@@ -353,3 +353,7 @@ TourPlanner/database.txt
 # Dynamically generated tour images
 TourPlanner/TourPlanner/TourImages/*
 !TourPlanner/TourPlanner/TourImages/Placeholder.png
+
+#id values
+TourPlanner/id.txt
+TourPlanner/logid.txt
