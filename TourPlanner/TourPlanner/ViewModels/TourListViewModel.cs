@@ -52,6 +52,10 @@ namespace TourPlanner.ViewModels
                 _selectedItem = value;
                 OnPropertyChanged(nameof(SelectedItem));
                 OnSelectUpdate?.Invoke(this, SelectedItem);
+                if (SelectedItem == null)
+                {
+                    return;
+                }
                 OnchangeUpdateID?.Invoke(this, SelectedItem.ID);
             }
         }
