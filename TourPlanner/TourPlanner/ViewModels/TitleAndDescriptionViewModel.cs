@@ -114,8 +114,6 @@ namespace TourPlanner.ViewModels
             //set placeholder tour image
             TourInfo.ImageName = "Placeholder.png";
             UpdateTourImage();
-
-
         }
 
         private async void SaveTourInfo(TourData Info)
@@ -138,7 +136,28 @@ namespace TourPlanner.ViewModels
             {
                 MessageBox.Show("Tour Name already exists!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
 
+        public void ClearView()
+        {
+            TourInfo.ID = 0;
+            TourInfo.TourName = null;
+            TourInfo.TourDescription = null;
+            TourInfo.Start = null;
+            TourInfo.Destination = null;
+            TourInfo.TransportType = null;
+            TourInfo.TourDistance = 0;
+            TourInfo.Time = null;
+            TourInfo.Popularity = null;
+            TourInfo.ChildFriendliness = null;
+            TourInfo.Favourite = "false";
+            TourInfo.IsUpdating = false;
+
+            RouteDisplay = "Visible";
+            DescriptionDisplay = "Collapsed";
+
+            TourInfo.ImageName = "Placeholder.png";
+            UpdateTourImage();
         }
     }
 }

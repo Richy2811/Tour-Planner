@@ -60,10 +60,15 @@ namespace TourPlanner.ViewModels
 
             tourListViewModel.OnSelectUpdate += (_, tourSelection) =>
             {
+                if (tourSelection == null)
+                {
+                    //clear views
+                    titleAndDescriptionViewModel.ClearView();
+                    tourLogViewModel.LogData.Clear();
+                }
                 SynchronizeViewModelData.SynchronizeTourListTitleDescription(tourSelection, titleAndDescriptionViewModel.TourInfo);
                 //update image
                 titleAndDescriptionViewModel.UpdateTourImage();
-                
             };
 
             tourListViewModel.OnchangeUpdateID += async (_, id) =>
@@ -71,7 +76,6 @@ namespace TourPlanner.ViewModels
                 tourLogViewModel.TourID = id;
                 await tourLogViewModel.LoadLogs(id);
             };
-
         }
     }
 }

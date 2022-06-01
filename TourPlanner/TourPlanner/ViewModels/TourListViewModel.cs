@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows;
 using TourPlanner.BL;
 using TourPlanner.Models;
 using TourPlanner.ViewModels.Abstract;
@@ -36,8 +37,6 @@ namespace TourPlanner.ViewModels
                 OnPropertyChanged(nameof(FavButton));
             }
         }
-
-
 
         private TourData _selectedItem;
         public TourData SelectedItem
@@ -104,11 +103,14 @@ namespace TourPlanner.ViewModels
                 {
                     return;
                 }
+
                 foreach (TourData element in TourListCollection)
                 {
+                    //remove selected item and break statement to prevent an exception throw (property changed during iteration)
                     if (SelectedItem.ID == element.ID)
                     {
-                        //remove selected item and break statement to prevent an exception throw (property changed during iteration)
+                        //set selected item to null to prevent event handler from asynchronously loading tours into database while deleting from database
+                        SelectedItem = null;
                         TourListCollection.Remove(element);
                         DeleteTourFromDB(element.ID);
                         break;
@@ -153,7 +155,6 @@ namespace TourPlanner.ViewModels
                     FavButton = "<3";
                     await ReadToursFromDB();
                 }
-
             });
         }
 
@@ -176,7 +177,6 @@ namespace TourPlanner.ViewModels
                         (string)data["transport_type" + index], (int)data["distance" + index], (string)data["estimated_time" + index], (string)data["image" + index], popularity, friendliness, (string)data["favourite" + index]));
                     index++;
                     exists = data.ContainsKey("id" + index);
-
                 }
             }
         }
@@ -184,6 +184,16 @@ namespace TourPlanner.ViewModels
         private async void DeleteTourFromDB(int tourID)
         {
             bool success = await DeleteData.DeleteTour(tourID);
+            //after async database access is complete -> change selection in list if collection contains at least one entry
+            if (TourListCollection.Count > 0)
+            {
+                SelectedItem = TourListCollection[0];
+            }
+
+            if (success)
+            {
+                MessageBox.Show("Deletion successful!", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
     }
 }
