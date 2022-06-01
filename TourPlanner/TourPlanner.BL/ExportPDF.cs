@@ -22,7 +22,7 @@ namespace TourPlanner.BL
     {
         private const string _targetFile = "TourSummary.pdf";
 
-        public static int GeneratePdfSingle(TourData tour)
+        public static int GeneratePdfSingle(TourData tour, ObservableCollection<LogEntry> logs)
         {
             //check if tour is selected and has valid data
             if (tour == null)
@@ -45,6 +45,8 @@ namespace TourPlanner.BL
                 .SetTextAlignment(TextAlignment.CENTER);
             document.Add(title);
 
+            #region Description
+
             Paragraph tourDescriptionHeader = new Paragraph("Description:")
                 .SetFont(PdfFontFactory.CreateFont(StandardFonts.TIMES_ROMAN))
                 .SetFontSize(18);
@@ -54,6 +56,10 @@ namespace TourPlanner.BL
                 .SetFont(PdfFontFactory.CreateFont(StandardFonts.TIMES_ROMAN))
                 .SetFontSize(15);
             document.Add(tourDescription);
+
+            #endregion
+
+            #region Tour details
 
             Paragraph tourDetailsHeader = new Paragraph("Details:")
                 .SetFont(PdfFontFactory.CreateFont(StandardFonts.TIMES_ROMAN))
@@ -73,9 +79,25 @@ namespace TourPlanner.BL
             tourTable.AddCell(tour.Time);
             tourTable.AddCell($"{tour.TourDistance} km");
 
-            tourTable.SetMarginBottom(10);
+            tourTable.SetMarginBottom(1);
 
             document.Add(tourTable);
+
+            //more details
+            Table tourTableExtra = new Table(UnitValue.CreatePercentArray(5)).UseAllAvailableWidth();
+            tourTableExtra.AddHeaderCell(new Cell().Add(new Paragraph("Popularity")).SetBackgroundColor(ColorConstants.LIGHT_GRAY));
+            tourTableExtra.AddHeaderCell(new Cell().Add(new Paragraph("Child Friendliness")).SetBackgroundColor(ColorConstants.LIGHT_GRAY));
+
+            tourTableExtra.AddCell(tour.Popularity);
+            tourTableExtra.AddCell(tour.ChildFriendliness);
+
+            tourTableExtra.SetMarginBottom(10);
+
+            document.Add(tourTableExtra);
+
+            #endregion
+
+            #region Map image
 
             Paragraph tourMapHeader = new Paragraph("Map Overview")
                 .SetFont(PdfFontFactory.CreateFont(StandardFonts.TIMES_ROMAN))
@@ -84,7 +106,41 @@ namespace TourPlanner.BL
             document.Add(tourMapHeader);
 
             ImageData tourImage = ImageDataFactory.Create($"../../../TourImages/{tour.ImageName}");
-            document.Add(new Image(tourImage).SetHorizontalAlignment(HorizontalAlignment.CENTER).SetBorder(new SolidBorder(2)));
+            document.Add(new Image(tourImage).SetHorizontalAlignment(HorizontalAlignment.CENTER).SetBorder(new SolidBorder(2)).SetMarginBottom(10));
+
+            #endregion
+
+            #region Logs
+
+            //skip section if no logs have been created yet
+            if (logs.Count > 0)
+            {
+                Paragraph logHeader = new Paragraph("Logs")
+                    .SetFont(PdfFontFactory.CreateFont(StandardFonts.TIMES_ROMAN))
+                    .SetFontSize(18)
+                    .SetTextAlignment(TextAlignment.CENTER);
+                document.Add(logHeader);
+
+                Table logTable = new Table(UnitValue.CreatePercentArray(5)).UseAllAvailableWidth();
+                logTable.AddHeaderCell(new Cell().Add(new Paragraph("Date")).SetBackgroundColor(ColorConstants.LIGHT_GRAY));
+                logTable.AddHeaderCell(new Cell().Add(new Paragraph("Duration")).SetBackgroundColor(ColorConstants.LIGHT_GRAY));
+                logTable.AddHeaderCell(new Cell().Add(new Paragraph("Comment")).SetBackgroundColor(ColorConstants.LIGHT_GRAY));
+                logTable.AddHeaderCell(new Cell().Add(new Paragraph("Difficulty")).SetBackgroundColor(ColorConstants.LIGHT_GRAY));
+                logTable.AddHeaderCell(new Cell().Add(new Paragraph("Rating")).SetBackgroundColor(ColorConstants.LIGHT_GRAY));
+
+                foreach (LogEntry entry in logs)
+                {
+                    logTable.AddCell(entry.Date);
+                    logTable.AddCell(entry.Duration);
+                    logTable.AddCell(entry.Comment);
+                    logTable.AddCell(entry.Difficulty);
+                    logTable.AddCell(entry.Rating);
+                }
+
+                document.Add(logTable);
+            }
+
+            #endregion
 
             document.Close();
 
@@ -94,15 +150,26 @@ namespace TourPlanner.BL
         public static int GeneratePdfAll()
         {
             List<TourData> tourEntries = new List<TourData>();
+            List<LogEntry> tourLogEntries = new List<LogEntry>();
             //retrieve all tours from the database
-            Task<Dictionary<string, object> > dbTourCollectionReturn = Task.Run(() => GetData.GetAllTours());
+            Dictionary<string, object> dbTourCollectionReturn = Task.Run(async () => await GetData.GetAllTours()).Result;
 
-            int index = 0;
-            while (dbTourCollectionReturn.Result.ContainsKey("id" + index))
+            int tourResultIndex = 0;
+            while (dbTourCollectionReturn.ContainsKey("id" + tourResultIndex))
             {
-                tourEntries.Add(new TourData((int)dbTourCollectionReturn.Result["id" + index], (string)dbTourCollectionReturn.Result["name" + index], (string)dbTourCollectionReturn.Result["description" + index], (string)dbTourCollectionReturn.Result["start" + index], (string)dbTourCollectionReturn.Result["destination" + index],
-                    (string)dbTourCollectionReturn.Result["transport_type" + index], (int)dbTourCollectionReturn.Result["distance" + index], (string)dbTourCollectionReturn.Result["estimated_time" + index], (string)dbTourCollectionReturn.Result["image" + index], (string)dbTourCollectionReturn.Result["popularity" + index], (string)dbTourCollectionReturn.Result["childfriendlyness" + index], (string)dbTourCollectionReturn.Result["favourite" + index]));
-                index++;
+                tourEntries.Add(new TourData((int)dbTourCollectionReturn["id" + tourResultIndex],
+                    (string)dbTourCollectionReturn["name" + tourResultIndex],
+                    (string)dbTourCollectionReturn["description" + tourResultIndex],
+                    (string)dbTourCollectionReturn["start" + tourResultIndex],
+                    (string)dbTourCollectionReturn["destination" + tourResultIndex],
+                    (string)dbTourCollectionReturn["transport_type" + tourResultIndex],
+                    (int)dbTourCollectionReturn["distance" + tourResultIndex],
+                    (string)dbTourCollectionReturn["estimated_time" + tourResultIndex],
+                    (string)dbTourCollectionReturn["image" + tourResultIndex],
+                    (string)dbTourCollectionReturn["popularity" + tourResultIndex],
+                    (string)dbTourCollectionReturn["childfriendlyness" + tourResultIndex],
+                    (string)dbTourCollectionReturn["favourite" + tourResultIndex]));
+                tourResultIndex++;
             }
 
             //create pdf document
@@ -114,6 +181,8 @@ namespace TourPlanner.BL
             bool firstIteration = true;
             foreach (TourData tour in tourEntries)
             {
+                tourLogEntries.Clear();
+
                 if (!firstIteration)
                 {
                     document.Add(new AreaBreak());
@@ -125,6 +194,8 @@ namespace TourPlanner.BL
                 .SetTextAlignment(TextAlignment.CENTER);
                 document.Add(title);
 
+                #region Description
+
                 Paragraph tourDescriptionHeader = new Paragraph("Description:")
                     .SetFont(PdfFontFactory.CreateFont(StandardFonts.TIMES_ROMAN))
                     .SetFontSize(18);
@@ -134,6 +205,10 @@ namespace TourPlanner.BL
                     .SetFont(PdfFontFactory.CreateFont(StandardFonts.TIMES_ROMAN))
                     .SetFontSize(15);
                 document.Add(tourDescription);
+
+                #endregion
+
+                #region Tour Details
 
                 Paragraph tourDetailsHeader = new Paragraph("Details:")
                     .SetFont(PdfFontFactory.CreateFont(StandardFonts.TIMES_ROMAN))
@@ -153,9 +228,25 @@ namespace TourPlanner.BL
                 tourTable.AddCell(tour.Time);
                 tourTable.AddCell($"{tour.TourDistance} km");
 
-                tourTable.SetMarginBottom(10);
+                tourTable.SetMarginBottom(1);
 
                 document.Add(tourTable);
+
+                //more details
+                Table tourTableExtra = new Table(UnitValue.CreatePercentArray(5)).UseAllAvailableWidth();
+                tourTableExtra.AddHeaderCell(new Cell().Add(new Paragraph("Popularity")).SetBackgroundColor(ColorConstants.LIGHT_GRAY));
+                tourTableExtra.AddHeaderCell(new Cell().Add(new Paragraph("Child Friendliness")).SetBackgroundColor(ColorConstants.LIGHT_GRAY));
+
+                tourTableExtra.AddCell(tour.Popularity);
+                tourTableExtra.AddCell(tour.ChildFriendliness);
+
+                tourTableExtra.SetMarginBottom(10);
+
+                document.Add(tourTableExtra);
+
+                #endregion
+
+                #region Map image
 
                 Paragraph tourMapHeader = new Paragraph("Map Overview")
                     .SetFont(PdfFontFactory.CreateFont(StandardFonts.TIMES_ROMAN))
@@ -164,7 +255,58 @@ namespace TourPlanner.BL
                 document.Add(tourMapHeader);
 
                 ImageData tourImage = ImageDataFactory.Create($"../../../TourImages/{tour.ImageName}");
-                document.Add(new Image(tourImage).SetHorizontalAlignment(HorizontalAlignment.CENTER).SetBorder(new SolidBorder(2)));
+                document.Add(new Image(tourImage).SetHorizontalAlignment(HorizontalAlignment.CENTER).SetBorder(new SolidBorder(2)).SetMarginBottom(10));
+
+                #endregion
+
+                #region Logs
+
+                //retrieve current tour log entries
+                Dictionary<string, object> dbTourLogReturn = Task.Run(async () => await GetData.GetAllTourLogData(tour.ID)).Result;
+                int logResultIndex = 0;
+                if (dbTourLogReturn != null)
+                {
+                    while (dbTourLogReturn.ContainsKey("id" + logResultIndex))
+                    {
+                        tourLogEntries.Add(new LogEntry((int)dbTourLogReturn["id" + logResultIndex],
+                            (string)dbTourLogReturn["date_time" + logResultIndex],
+                            (string)dbTourLogReturn["comment" + logResultIndex],
+                            (string)dbTourLogReturn["difficulty" + logResultIndex],
+                            (string)dbTourLogReturn["total_time" + logResultIndex],
+                            (string)dbTourLogReturn["rating" + logResultIndex]));
+                        logResultIndex++;
+                    }
+                }
+
+                //skip section if no logs have been created yet
+                if (tourLogEntries.Count > 0)
+                {
+                    Paragraph logHeader = new Paragraph("Logs")
+                        .SetFont(PdfFontFactory.CreateFont(StandardFonts.TIMES_ROMAN))
+                        .SetFontSize(18)
+                        .SetTextAlignment(TextAlignment.CENTER);
+                    document.Add(logHeader);
+
+                    Table logTable = new Table(UnitValue.CreatePercentArray(5)).UseAllAvailableWidth();
+                    logTable.AddHeaderCell(new Cell().Add(new Paragraph("Date")).SetBackgroundColor(ColorConstants.LIGHT_GRAY));
+                    logTable.AddHeaderCell(new Cell().Add(new Paragraph("Duration")).SetBackgroundColor(ColorConstants.LIGHT_GRAY));
+                    logTable.AddHeaderCell(new Cell().Add(new Paragraph("Comment")).SetBackgroundColor(ColorConstants.LIGHT_GRAY));
+                    logTable.AddHeaderCell(new Cell().Add(new Paragraph("Difficulty")).SetBackgroundColor(ColorConstants.LIGHT_GRAY));
+                    logTable.AddHeaderCell(new Cell().Add(new Paragraph("Rating")).SetBackgroundColor(ColorConstants.LIGHT_GRAY));
+
+                    foreach (LogEntry entry in tourLogEntries)
+                    {
+                        logTable.AddCell(entry.Date);
+                        logTable.AddCell(entry.Duration);
+                        logTable.AddCell(entry.Comment);
+                        logTable.AddCell(entry.Difficulty);
+                        logTable.AddCell(entry.Rating);
+                    }
+
+                    document.Add(logTable);
+                }
+
+                #endregion
 
                 firstIteration = false;
             }

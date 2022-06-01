@@ -37,7 +37,7 @@ namespace TourPlanner.ViewModels
 
             menuBarViewModel.OnClickGenerate += (_, exportSingle) =>
             {
-                switch (exportSingle ? ExportPDF.GeneratePdfSingle(tourListViewModel.SelectedItem) : ExportPDF.GeneratePdfAll())
+                switch (exportSingle ? ExportPDF.GeneratePdfSingle(tourListViewModel.SelectedItem, tourLogViewModel.LogData) : ExportPDF.GeneratePdfAll())
                 {
                     case 0:
                         MessageBox.Show("PDF document successfully created", "", MessageBoxButton.OK, MessageBoxImage.Information);
