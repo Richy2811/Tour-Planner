@@ -46,17 +46,21 @@ namespace TourPlanner.BL
                     exists = data.ContainsKey("id" + index);
                 }
 
-                if (lowCount / counter >= 0.2f)
+                if(counter != 0)
                 {
-                    friendliness = "low";
-                }
-                else if (medCount / counter >= 0.2f)
-                {
-                    friendliness = "medium";
-                }
-                else
-                {
-                    friendliness = "high";
+                    if (lowCount / counter >= 0.2f)
+                    {
+                        friendliness = "low";
+                    }
+                    else if (medCount / counter >= 0.2f)
+                    {
+                        friendliness = "medium";
+                    }
+                    else
+                    {
+                        friendliness = "high";
+                    }
+
                 }
 
                 return friendliness;
