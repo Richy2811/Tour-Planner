@@ -19,7 +19,7 @@ namespace TourPlanner.BL
             bool success = await Database.Base.Delete("tours", restrictions);
             Dictionary<string, object> restrictions_logs = new()
             {
-                { "id", tourID }
+                { "tour_id", tourID }
             };
             success = await Database.Base.Delete("logs", restrictions_logs);
 
