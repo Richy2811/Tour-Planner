@@ -54,7 +54,7 @@ namespace TourPlanner.Test
         {
             // Arrange
             TourListViewModel tourListViewModel = new();
-            var lastDataCount = tourListViewModel.TourListCollection.Count;
+            
 
             string[] info;
             string IdFile = AppDomain.CurrentDomain.BaseDirectory + @"..\..\..\..\id.txt";
@@ -76,6 +76,9 @@ namespace TourPlanner.Test
             }
 
             // Act
+            tourListViewModel.TourListCollection.Clear();
+            System.Threading.Thread.Sleep(5000);
+            var lastDataCount = tourListViewModel.TourListCollection.Count;
             tourListViewModel.AddTour.Execute(null);
             var expectedDataCount = lastDataCount + 1;
             var currentDataCount = tourListViewModel.TourListCollection.Count;
@@ -94,6 +97,26 @@ namespace TourPlanner.Test
 
         }
 
-        
+        [Test]
+        public void TestSearchTour()
+        {
+            // Arrange
+            TourListViewModel tourListViewModel = new();
+            tourListViewModel.TourListCollection.Add(new TourData("Name1", "TestTransportType1"));
+            tourListViewModel.TourListCollection.Add(new TourData("Test", "TestTransportType2"));
+
+            // Act
+            tourListViewModel.TourSearchText = "TestTransportType1";
+            tourListViewModel.SearchTour.Execute(null);
+            int expected = 1;
+            int actual = tourListViewModel.TourListCollection.Count;
+
+            // Assert
+            Assert.AreEqual(expected, actual, "TourListCollection should contain one Tours!");
+        }
+
+
+
+
     }
 }

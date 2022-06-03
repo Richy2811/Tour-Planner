@@ -14,7 +14,7 @@ namespace TourPlanner.DAL.Test
         }
 
         [Test]
-        public void TestLogEntry()
+        public void TestDBInfo()
         {
             // Arrange
             DatabaseInfo dBInfo = new();

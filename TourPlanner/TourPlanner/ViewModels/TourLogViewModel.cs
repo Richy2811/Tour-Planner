@@ -155,15 +155,23 @@ namespace TourPlanner.ViewModels
             }
         }
 
-        private async void SaveLogs()
+        public async void SaveLogs()
         {
             bool success = await SaveData.SaveLogInfo(LogData, TourID);
             MessageBox.Show("Successfully saved Logs!", "Saved", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-        private async void DeleteLogFromDB(int logID)
+        public async void DeleteLogFromDB(int logID)
         {
-            bool success = await DeleteData.DeleteTour(logID);
+            bool success = await DeleteData.DeleteLog(logID);
+            if (LogData.Count > 0)
+            {
+                SelectedItem = LogData[0];
+            }
+            if (success)
+            {
+                MessageBox.Show("Deletion successful!", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
     }
 }

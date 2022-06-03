@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using TourPlanner.ViewModels;
 
 namespace TourPlanner.Test
@@ -90,5 +91,25 @@ namespace TourPlanner.Test
             Assert.AreEqual(expectedDate, currentDate, "The new Log Date Type should be empty");
 
         }
+
+        [Test]
+        public void TestDeleteLog()
+        {
+            // Arrange
+            TourLogViewModel tourLogViewModel = new();
+            tourLogViewModel.LogData.Add(new LogEntry(1000, "Test1", "Test1", "Test1", "Test1", "10"));
+            tourLogViewModel.LogData.Add(new LogEntry(1001, "Test2", "Test2", "Test2", "Test2", "10"));
+
+            // Act
+            tourLogViewModel.SelectedItem = tourLogViewModel.LogData[0];
+            tourLogViewModel.DeleteLog.Execute(null);
+
+            int expected = 1;
+            int actual = tourLogViewModel.LogData.Count;
+
+            // Assert
+            Assert.AreEqual(expected, actual, "LogData should contain one Log!");
+        }
+
     }
 }
