@@ -12,6 +12,7 @@ namespace TourPlanner.DAL
     {
         private readonly NpgsqlConnection db;
         private static Database instance;
+        DatabaseInfo Info = new();
 
         public static Database Base
         {
@@ -28,7 +29,7 @@ namespace TourPlanner.DAL
 
         public Database()
         {
-            DatabaseInfo Info = new();
+            
             var db = new NpgsqlConnection($"Host={Info.Host}; Username={Info.User};Password={Info.Password};Database={Info.Database}");
 
             db.Open();

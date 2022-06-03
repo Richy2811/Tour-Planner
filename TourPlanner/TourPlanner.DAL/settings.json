@@ -1,0 +1,7 @@
+{
+  "host": "localhost",
+  "user": "postgres",
+  "password": "",
+  "database": "tourplanner",
+  "mapquestkey": "8Ls9YtZjQESK1vRFuUIEgCyRjAwWP3SI"
+}

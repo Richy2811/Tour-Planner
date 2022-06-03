@@ -49,6 +49,8 @@ namespace TourPlanner.BL.Test
 
             Dictionary<string, object>  actualData = await Database.Base.Read("*", "tours", restrictions);
 
+            await Database.Base.Delete("tours", restrictions);
+
             // Assert
             Assert.AreEqual(expectedData, actualData, "Tours should be the same!");
         }

@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
 using TourPlanner.Models;
 
@@ -9,10 +10,10 @@ namespace TourPlanner.DAL
 {
     public class MapQuestDirection
     {
-        private const string _mapQuestKey = "8Ls9YtZjQESK1vRFuUIEgCyRjAwWP3SI";
 
         public static async Task<JObject> GetRouteJsonAsync(TourData tourInfo)
         {
+            string mapQusestKey = GetMapQuestKey();
             string transportType = tourInfo.TransportType;
             switch (transportType)
             {
@@ -30,7 +31,7 @@ namespace TourPlanner.DAL
             }
 
             string mapQuestRouteUrl = "http://www.mapquestapi.com/directions/v2/route";
-            string mapQuestParameters = $"?key={_mapQuestKey}&from={tourInfo.Start}&to={tourInfo.Destination}&unit=k&routeType={transportType}&locale=de_DE";
+            string mapQuestParameters = $"?key={mapQusestKey}&from={tourInfo.Start}&to={tourInfo.Destination}&unit=k&routeType={transportType}&locale=de_DE";
             JObject routeInfo = null;
             HttpClient client = new HttpClient();
             HttpResponseMessage response = await client.GetAsync(mapQuestRouteUrl + mapQuestParameters);
@@ -47,6 +48,14 @@ namespace TourPlanner.DAL
             client.Dispose();
 
             return $"{sessionId}.png";
+        }
+
+        private static string GetMapQuestKey()
+        {
+            IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("settings.json", false, true);
+            IConfigurationRoot config = builder.Build();
+
+            return config["mapquestkey"];
         }
     }
 }

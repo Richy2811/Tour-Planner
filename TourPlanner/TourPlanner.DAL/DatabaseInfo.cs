@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -20,8 +21,10 @@ namespace TourPlanner.DAL
         }
 
 
-        private void ReadInfo()
+        
+        /*private void ReadInfo()
         {
+            
             string[] info;
             string FileToRead = AppDomain.CurrentDomain.BaseDirectory + @"..\..\..\..\database.txt";
             if (!File.Exists(FileToRead))
@@ -36,6 +39,17 @@ namespace TourPlanner.DAL
             User = info[1];
             Password = info[2];
             Database = info[3];
+        }
+        */
+        public void ReadInfo()
+        {
+            IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("settings.json", false, true);
+            IConfigurationRoot config = builder.Build();
+
+            Host = config["host"];
+            User = config["user"];
+            Password = config["password"];
+            Database = config["database"];
         }
     }
 }
