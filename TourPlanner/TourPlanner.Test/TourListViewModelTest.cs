@@ -97,7 +97,7 @@ namespace TourPlanner.Test
 
         }
 
-        [Test]
+        /*[Test]
         public void TestSearchTour()
         {
             // Arrange
@@ -113,7 +113,7 @@ namespace TourPlanner.Test
 
             // Assert
             Assert.AreEqual(expected, actual, "TourListCollection should contain one Tours!");
-        }
+        }*/
 
 
 

@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.Extensions.Configuration;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -35,6 +36,34 @@ namespace TourPlanner.DAL.Test
             string expectedUser = info[1];
             string expectedPassword = info[2];
             string expectedDatabase = info[3];
+
+            string actualHost = dBInfo.Host;
+            string actualUser = dBInfo.User;
+            string actualPassword = dBInfo.Password;
+            string actualDatabase = dBInfo.Database;
+
+
+            // Assert
+            Assert.AreEqual(expectedHost, actualHost);
+            Assert.AreEqual(expectedUser, actualUser);
+            Assert.AreEqual(expectedPassword, actualPassword);
+            Assert.AreEqual(expectedDatabase, actualDatabase);
+        }
+
+        [Test]
+        public void TestDBInfoNew()
+        {
+            // Arrange
+            DatabaseInfo dBInfo = new();
+
+            // Act
+            IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("settings.json", false, true);
+            IConfigurationRoot config = builder.Build();
+
+            string expectedHost = config["host"];
+            string expectedUser = config["user"];
+            string expectedPassword = config["password"];
+            string expectedDatabase = config["database"];
 
             string actualHost = dBInfo.Host;
             string actualUser = dBInfo.User;

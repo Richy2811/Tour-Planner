@@ -27,7 +27,7 @@ namespace TourPlanner.DAL
         }
 
 
-        public Database()
+        private Database()
         {
             
             var db = new NpgsqlConnection($"Host={Info.Host}; Username={Info.User};Password={Info.Password};Database={Info.Database}");
