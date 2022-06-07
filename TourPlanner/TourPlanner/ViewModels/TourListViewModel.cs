@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using TourPlanner.BL;
+using TourPlanner.Logging;
 using TourPlanner.Models;
 using TourPlanner.ViewModels.Abstract;
 
@@ -13,6 +14,7 @@ namespace TourPlanner.ViewModels
 {
     public class TourListViewModel : BaseViewModel
     {
+        private static ILoggerWrapper logger = LoggerFactory.GetLogger("TourListViewModel");
         public ObservableCollection<TourData> TourListCollection { get; set; } = new ObservableCollection<TourData>();
 
         private string _tourSearchText;
@@ -69,6 +71,7 @@ namespace TourPlanner.ViewModels
 
         public TourListViewModel()
         {
+            logger.Debug("createdTourListViewModel()");
             //search text must not be null
             _tourSearchText = "";
 
@@ -95,6 +98,7 @@ namespace TourPlanner.ViewModels
                 }
 
                 TourListCollection.Add(new TourData(id,$"SampleTour{id}", "Bicycle"));
+                logger.Debug("AddTour()");
             });
 
             DeleteTour = new RelayCommand((_) =>
@@ -116,6 +120,7 @@ namespace TourPlanner.ViewModels
                         break;
                     }
                 }
+                logger.Debug("deleteTour()");
             });
 
             SearchTour = new RelayCommand(async (_) =>

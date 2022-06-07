@@ -7,11 +7,13 @@ using TourPlanner.BL;
 using System.Windows;
 using System.IO;
 using System.Threading.Tasks;
+using TourPlanner.Logging;
 
 namespace TourPlanner.ViewModels
 {
     public class TourLogViewModel : BaseViewModel
     {
+        private static ILoggerWrapper logger = LoggerFactory.GetLogger("TourLogViewModel");
         public ObservableCollection<LogEntry> LogData { get; } = new ObservableCollection<LogEntry>();
         
         private string _logSearchText;
@@ -60,6 +62,7 @@ namespace TourPlanner.ViewModels
 
         public TourLogViewModel()
         {
+            logger.Debug("createdTourLogViewModel()");
             //search text must not be null
             _logSearchText = "";
 
@@ -85,6 +88,7 @@ namespace TourPlanner.ViewModels
                 }
 
                 LogData.Add(new LogEntry( id,"empty", "empty", "empty", "empty", "10"));
+                logger.Debug("addLog()");
             });
 
             DeleteLog = new RelayCommand((_) =>
@@ -103,6 +107,7 @@ namespace TourPlanner.ViewModels
                         break;
                     }
                 }
+                logger.Debug("deleteLog()");
             });
 
             SaveLog = new RelayCommand((_) =>

@@ -9,11 +9,14 @@ using TourPlanner.Models;
 using TourPlanner.ViewModels.Abstract;
 using TourPlanner.BL;
 using System.Collections.Generic;
+using TourPlanner.Logging;
 
 namespace TourPlanner.ViewModels
 {
     public class TitleAndDescriptionViewModel : BaseViewModel
     {
+        private static ILoggerWrapper logger = LoggerFactory.GetLogger("TitleAndDescriptionModel");
+
         private TourData _tourInfo = new TourData(null, null);
         private string _routeDisplay;
         private string _descriptionDisplay;
@@ -69,15 +72,18 @@ namespace TourPlanner.ViewModels
 
         public TitleAndDescriptionViewModel()
         {
+            logger.Debug("TitleAndDescriptionViewModelCreated()");
             //bind "Route" and "Description" buttons to set visibility of components
             ShowRoute = new RelayCommand((_) =>
             {
+                logger.Debug("showRoute()");
                 RouteDisplay = "Visible";
                 DescriptionDisplay = "Collapsed";
             });
 
             ShowDescription = new RelayCommand((_) =>
             {
+                logger.Debug("showDes()");
                 RouteDisplay = "Collapsed";
                 DescriptionDisplay = "Visible";
             });
@@ -105,6 +111,7 @@ namespace TourPlanner.ViewModels
 
                 //save TourInfo in DB
                 SaveTourInfo(_tourInfo);
+                logger.Debug("saveTour()");
             });
 
             //set initial visibility of components

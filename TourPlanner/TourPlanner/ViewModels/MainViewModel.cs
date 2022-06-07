@@ -35,6 +35,8 @@ namespace TourPlanner.ViewModels
             this.tourListViewModel = tourListViewModel;
             this.tourLogViewModel = tourLogViewModel;
 
+            logger.Debug("subViewModelsCreated");
+
             menuBarViewModel.OnClickGenerate += (_, exportSingle) =>
             {
                 switch (exportSingle ? ExportPDF.GeneratePdfSingle(tourListViewModel.SelectedItem, tourLogViewModel.LogData) : ExportPDF.GeneratePdfAll())
